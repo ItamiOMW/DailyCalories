@@ -2,7 +2,12 @@ package com.example.dailycalories.presentation.theme.ui
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+
+val DarkBlue = Color(0xFF06091d)
+val White = Color(0xFFf9f9f9)
+val GrayWhite = Color(0xFFEAEBEB)
+val Gray = Color(0xFF292a33)
+val Green = Color(0xFF54976B)
+val Orange = Color(0xFFF3A522)
+val Pink = Color(0xFFC2A7C7)
+val Turquoise = Color(0xFF90E6D6)
