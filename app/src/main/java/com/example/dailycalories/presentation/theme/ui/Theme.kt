@@ -7,30 +7,33 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    primary = DarkBlue,
+    onPrimary = White,
+    background = DarkBlue,
+    onBackground = White,
+    secondary = White,
+    secondaryVariant = GrayWhite,
+    onSecondary = Gray,
+    surface = Gray,
+    onSurface = White,
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+    primary = White,
+    onPrimary = DarkBlue,
+    background = White,
+    onBackground = DarkBlue,
+    secondary = DarkBlue,
+    secondaryVariant = Gray,
+    onSecondary = DarkBlue,
+    surface = GrayWhite,
+    onSurface = Gray
 )
 
 @Composable
 fun DailyCaloriesTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val colors = if (darkTheme) {
         DarkColorPalette
