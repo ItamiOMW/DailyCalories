@@ -28,11 +28,11 @@ fun MealFoodProductEntity.toMealFoodProduct() = MealFoodProduct(
     name = name,
     grams = grams,
     kCals = kCals,
-    protein = proteins,
+    proteins = proteins,
     carbs = carbs,
     fat = fat,
     kCaloriesIn100Grams = kCaloriesIn100Grams,
-    proteinIn100Grams = proteinIn100Grams,
+    proteinsIn100Grams = proteinsIn100Grams,
     carbsIn100Grams = carbsIn100Grams,
     fatIn100Grams = fatIn100Grams
 )
@@ -43,11 +43,11 @@ fun MealFoodProduct.toMealFoodProductEntity() = MealFoodProductEntity(
     name = name,
     grams = grams,
     kCals = kCals,
-    proteins = protein,
+    proteins = proteins,
     carbs = carbs,
     fat = fat,
     kCaloriesIn100Grams = kCaloriesIn100Grams,
-    proteinIn100Grams = proteinIn100Grams,
+    proteinsIn100Grams = proteinsIn100Grams,
     carbsIn100Grams = carbsIn100Grams,
     fatIn100Grams = fatIn100Grams
 )

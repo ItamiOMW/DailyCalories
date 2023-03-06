@@ -1,9 +1,11 @@
 package com.example.dailycalories.di
 
 import com.example.dailycalories.data.repository.CalorieCounterRepositoryImpl
+import com.example.dailycalories.data.repository.FoodProductRepositoryImpl
 import com.example.dailycalories.data.repository.MealRepositoryImpl
 import com.example.dailycalories.data.repository.UserRepositoryImpl
 import com.example.dailycalories.domain.repository.CalorieCounterRepository
+import com.example.dailycalories.domain.repository.FoodProductRepository
 import com.example.dailycalories.domain.repository.MealRepository
 import com.example.dailycalories.domain.repository.UserRepository
 import dagger.Module
@@ -37,5 +39,12 @@ object AppModule {
     fun provideUserRepository(
         userRepositoryImpl: UserRepositoryImpl,
     ): UserRepository = userRepositoryImpl
+
+
+    @Singleton
+    @Provides
+    fun provideFoodProductRepository(
+        foodProductRepositoryImpl: FoodProductRepositoryImpl,
+    ): FoodProductRepository = foodProductRepositoryImpl
 
 }
