@@ -9,11 +9,11 @@ data class MealFoodProduct(
     val name: String,
     val grams: Float,
     val kCals: Float = 0f,
-    val protein: Float = 0f,
+    val proteins: Float = 0f,
     val carbs: Float = 0f,
     val fat: Float = 0f,
     val kCaloriesIn100Grams: Float,
-    val proteinIn100Grams: Float,
+    val proteinsIn100Grams: Float,
     val carbsIn100Grams: Float,
     val fatIn100Grams: Float,
 )

@@ -3,7 +3,6 @@ package com.example.dailycalories.di
 import android.app.Application
 import androidx.room.Room
 import com.example.dailycalories.data.local.DailyCaloriesDatabase
-import com.example.dailycalories.data.local.dao.FoodProductInfoDao
 import com.example.dailycalories.data.local.dao.MealDao
 import dagger.Module
 import dagger.Provides
@@ -21,13 +20,6 @@ object DatabaseModule {
     fun provideMealDao(
         db: DailyCaloriesDatabase
     ): MealDao = db.mealDao()
-
-
-    @Singleton
-    @Provides
-    fun provideProductInfoDao(
-        db: DailyCaloriesDatabase
-    ): FoodProductInfoDao = db.foodProductInfoDao()
 
 
     @Singleton

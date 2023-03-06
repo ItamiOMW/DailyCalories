@@ -15,7 +15,7 @@ data class MealFoodProductEntity(
     val carbs: Float,
     val fat: Float,
     val kCaloriesIn100Grams: Float,
-    val proteinIn100Grams: Float,
+    val proteinsIn100Grams: Float,
     val carbsIn100Grams: Float,
     val fatIn100Grams: Float,
 )

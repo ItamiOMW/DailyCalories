@@ -75,12 +75,12 @@ class MealRepositoryImpl @Inject constructor(
         val kCalories = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.kCaloriesIn100Grams
         val carbs = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.carbsIn100Grams
         val fat = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.fatIn100Grams
-        val protein = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.proteinIn100Grams
+        val protein = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.proteinsIn100Grams
         val newMealFoodProduct = mealFoodProduct.copy(
             kCals = kCalories,
             carbs = carbs,
             fat = fat,
-            protein = protein
+            proteins = protein
         ).toMealFoodProductEntity()
         mealDao.updateMealFoodProduct(newMealFoodProduct)
     }
