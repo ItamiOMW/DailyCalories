@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Daily Calories</string>
+    <string name="nav_item_title_home">Home</string>
+    <string name="nav_item_title_profile">Profile</string>
+    <string name="nav_item_title_meals">Meals</string>
+    <string name="bottom_bar_icon_desc">BottomBar screen icon. Click to navigate</string>
 </resources>
