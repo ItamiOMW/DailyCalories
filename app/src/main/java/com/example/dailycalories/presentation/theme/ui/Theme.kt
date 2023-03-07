@@ -13,7 +13,7 @@ private val DarkColorPalette = darkColors(
     background = DarkBlue,
     onBackground = White,
     secondary = White,
-    secondaryVariant = Turquoise,
+    secondaryVariant = Purple,
     onSecondary = Gray,
     surface = Gray,
     onSurface = White,
@@ -21,14 +21,14 @@ private val DarkColorPalette = darkColors(
 
 private val LightColorPalette = lightColors(
     primary = White,
-    primaryVariant = GrayWhite,
+    primaryVariant = White,
     onPrimary = DarkBlue,
     background = White,
     onBackground = DarkBlue,
     secondary = DarkBlue,
-    secondaryVariant = Turquoise,
-    onSecondary = GrayWhite,
-    surface = GrayWhite,
+    secondaryVariant = Purple,
+    onSecondary = GrayLight,
+    surface = GrayLight,
     onSurface = DarkBlue
 )
 

@@ -16,6 +16,14 @@ fun getCurrentDateString(): String {
     return LocalDate.now().toString()
 }
 
+fun getTomorrowDateString(): String {
+    return LocalDate.now().plusDays(1).toString()
+}
+
+fun getYesterdayDateString(): String {
+    return LocalDate.now().minusDays(1).toString()
+}
+
 fun getCurrentTimeSeconds(): Long {
     return LocalTime.now().toSecondOfDay().toLong()
 }
