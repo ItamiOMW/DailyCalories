@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            DailyCaloriesTheme {
+            DailyCaloriesTheme() {
 
                 val systemUiController = rememberSystemUiController().apply {
                     setSystemBarsColor(MaterialTheme.colors.primaryVariant)

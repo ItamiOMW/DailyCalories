@@ -4,4 +4,14 @@
     <string name="nav_item_title_profile">Profile</string>
     <string name="nav_item_title_meals">Meals</string>
     <string name="bottom_bar_icon_desc">BottomBar screen icon. Click to navigate</string>
+    <string name="kCals_count">%s kCals</string>
+    <string name="text_consumed">Consumed</string>
+    <string name="title_yesterday">Yesterday</string>
+    <string name="title_today">Today</string>
+    <string name="title_tomorrow">Tomorrow</string>
+    <string name="count_grams_short">%s g</string>
+    <string name="title_protein">Protein</string>
+    <string name="title_carbs">Carbs</string>
+    <string name="title_fat">Fat</string>
+    <string name="title_kCal">kCal</string>
 </resources>
