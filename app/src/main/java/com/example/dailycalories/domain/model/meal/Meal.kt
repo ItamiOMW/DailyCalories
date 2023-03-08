@@ -1,4 +1,4 @@
-package com.example.dailycalories.domain.model
+package com.example.dailycalories.domain.model.meal
 
 import com.example.dailycalories.utils.UNKNOWN_ID
 

@@ -32,13 +32,15 @@ fun HomeScreen(
 
     val state = homeViewModel.state
 
+        //TODO add meals count
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(15.dp)
     ) {
         Spacer(modifier = Modifier.fillMaxHeight(0.15f))
-        HeaderSection(kCals = state.KCals)
+        HeaderSection(kCals = state.kCals)
         Spacer(modifier = Modifier.fillMaxHeight(0.15f))
         DaysSection(
             date = state.date,
@@ -48,7 +50,7 @@ fun HomeScreen(
         )
         Spacer(modifier = Modifier.fillMaxHeight(0.15f))
         NutrientsCard(
-            kCals = state.KCals,
+            kCals = state.kCals,
             carbs = state.carbs,
             fat = state.fat,
             proteins = state.proteins,

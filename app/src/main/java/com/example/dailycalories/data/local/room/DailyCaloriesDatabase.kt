@@ -1,10 +1,10 @@
-package com.example.dailycalories.data.local
+package com.example.dailycalories.data.local.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.dailycalories.data.local.dao.MealDao
-import com.example.dailycalories.data.local.model.MealEntity
-import com.example.dailycalories.data.local.model.MealFoodProductEntity
+import com.example.dailycalories.data.local.room.dao.MealDao
+import com.example.dailycalories.data.local.room.model.MealEntity
+import com.example.dailycalories.data.local.room.model.MealFoodProductEntity
 
 @Database(
     entities = [

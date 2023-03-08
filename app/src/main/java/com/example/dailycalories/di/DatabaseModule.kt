@@ -2,8 +2,8 @@ package com.example.dailycalories.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.dailycalories.data.local.DailyCaloriesDatabase
-import com.example.dailycalories.data.local.dao.MealDao
+import com.example.dailycalories.data.local.room.DailyCaloriesDatabase
+import com.example.dailycalories.data.local.room.dao.MealDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

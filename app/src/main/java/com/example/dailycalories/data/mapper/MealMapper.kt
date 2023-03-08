@@ -1,9 +1,9 @@
 package com.example.dailycalories.data.mapper
 
-import com.example.dailycalories.data.local.model.MealEntity
-import com.example.dailycalories.data.local.model.MealFoodProductEntity
-import com.example.dailycalories.domain.model.Meal
-import com.example.dailycalories.domain.model.MealFoodProduct
+import com.example.dailycalories.data.local.room.model.MealEntity
+import com.example.dailycalories.data.local.room.model.MealFoodProductEntity
+import com.example.dailycalories.domain.model.meal.Meal
+import com.example.dailycalories.domain.model.meal.MealFoodProduct
 
 
 fun Meal.toMealEntity() = MealEntity(

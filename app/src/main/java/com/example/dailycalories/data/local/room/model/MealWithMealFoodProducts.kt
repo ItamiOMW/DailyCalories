@@ -1,4 +1,4 @@
-package com.example.dailycalories.data.local.model
+package com.example.dailycalories.data.local.room.model
 
 import androidx.room.Embedded
 import androidx.room.Relation

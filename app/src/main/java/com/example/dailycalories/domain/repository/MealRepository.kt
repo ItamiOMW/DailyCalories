@@ -1,7 +1,7 @@
 package com.example.dailycalories.domain.repository
 
-import com.example.dailycalories.domain.model.Meal
-import com.example.dailycalories.domain.model.MealFoodProduct
+import com.example.dailycalories.domain.model.meal.Meal
+import com.example.dailycalories.domain.model.meal.MealFoodProduct
 import kotlinx.coroutines.flow.Flow
 
 interface MealRepository {

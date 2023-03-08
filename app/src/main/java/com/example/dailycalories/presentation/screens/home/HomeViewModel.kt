@@ -60,7 +60,7 @@ class HomeViewModel @Inject constructor(
                     meals = meals,
                     carbs = carbs,
                     fat = fat,
-                    KCals = kCals,
+                    kCals = kCals,
                     proteins = proteins,
                     date = date
                 )
