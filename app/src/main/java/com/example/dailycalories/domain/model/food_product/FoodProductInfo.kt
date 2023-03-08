@@ -1,4 +1,4 @@
-package com.example.dailycalories.domain.model
+package com.example.dailycalories.domain.model.food_product
 
 data class FoodProductInfo(
     val name: String?,

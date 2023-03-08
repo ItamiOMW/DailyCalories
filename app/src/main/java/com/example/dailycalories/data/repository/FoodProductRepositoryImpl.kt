@@ -2,7 +2,7 @@ package com.example.dailycalories.data.repository
 
 import com.example.dailycalories.data.mapper.toFoodProductInfo
 import com.example.dailycalories.data.remote.OpenFoodApiService
-import com.example.dailycalories.domain.model.FoodProductInfo
+import com.example.dailycalories.domain.model.food_product.FoodProductInfo
 import com.example.dailycalories.domain.repository.FoodProductRepository
 import com.example.dailycalories.utils.Response
 import javax.inject.Inject

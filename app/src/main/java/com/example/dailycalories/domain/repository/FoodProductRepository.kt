@@ -1,6 +1,6 @@
 package com.example.dailycalories.domain.repository
 
-import com.example.dailycalories.domain.model.FoodProductInfo
+import com.example.dailycalories.domain.model.food_product.FoodProductInfo
 import com.example.dailycalories.utils.Response
 
 interface FoodProductRepository {

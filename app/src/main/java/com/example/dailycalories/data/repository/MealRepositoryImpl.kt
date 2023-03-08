@@ -1,11 +1,11 @@
 package com.example.dailycalories.data.repository
 
-import com.example.dailycalories.data.local.dao.MealDao
+import com.example.dailycalories.data.local.room.dao.MealDao
 import com.example.dailycalories.data.mapper.toMeal
 import com.example.dailycalories.data.mapper.toMealEntity
 import com.example.dailycalories.data.mapper.toMealFoodProductEntity
-import com.example.dailycalories.domain.model.Meal
-import com.example.dailycalories.domain.model.MealFoodProduct
+import com.example.dailycalories.domain.model.meal.Meal
+import com.example.dailycalories.domain.model.meal.MealFoodProduct
 import com.example.dailycalories.domain.repository.MealRepository
 import com.example.dailycalories.utils.HUNDRED_GRAMS
 import kotlinx.coroutines.flow.Flow

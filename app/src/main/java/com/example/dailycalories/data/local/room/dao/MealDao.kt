@@ -1,9 +1,9 @@
-package com.example.dailycalories.data.local.dao
+package com.example.dailycalories.data.local.room.dao
 
 import androidx.room.*
-import com.example.dailycalories.data.local.model.MealEntity
-import com.example.dailycalories.data.local.model.MealFoodProductEntity
-import com.example.dailycalories.data.local.model.MealWithMealFoodProducts
+import com.example.dailycalories.data.local.room.model.MealEntity
+import com.example.dailycalories.data.local.room.model.MealFoodProductEntity
+import com.example.dailycalories.data.local.room.model.MealWithMealFoodProducts
 import kotlinx.coroutines.flow.Flow
 
 @Dao

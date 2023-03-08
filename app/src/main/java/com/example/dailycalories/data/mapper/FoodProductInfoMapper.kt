@@ -1,7 +1,7 @@
 package com.example.dailycalories.data.mapper
 
 import com.example.dailycalories.data.remote.model.ProductDto
-import com.example.dailycalories.domain.model.FoodProductInfo
+import com.example.dailycalories.domain.model.food_product.FoodProductInfo
 
 
 fun ProductDto.toFoodProductInfo() = FoodProductInfo(
