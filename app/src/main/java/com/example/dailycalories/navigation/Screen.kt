@@ -9,18 +9,32 @@ sealed class Screen(protected val route: String, vararg params: String) {
     }
 
 
+    
+    object OnboardingScreen: Screen(route = ONBOARDING_SCREEN_ROUTE)
+    
+    
+    object RecommendedNutritionScreen: Screen(route = RECOMMENDED_NUTRITION_SCREEN_ROUTE)
+            
+            
     object HomeScreen : Screen(route = HOME_SCREEN_ROUTE)
 
+    
     object MealsScreen : Screen(route = MEALS_SCREEN_ROUTE)
 
+    
     object ProfileScreen : Screen(route = PROFILE_SCREEN_ROUTE)
 
+    
     object SearchFoodScreen : Screen(route = SEARCH_FOOD_SCREEN_ROUTE)
 
 
     companion object {
 
         //Screen routes
+        private const val ONBOARDING_SCREEN_ROUTE = "onboarding"
+
+        private const val RECOMMENDED_NUTRITION_SCREEN_ROUTE = "recommended_nutrition"
+
         private const val HOME_SCREEN_ROUTE = "home"
 
         private const val MEALS_SCREEN_ROUTE = "meals"
@@ -28,15 +42,11 @@ sealed class Screen(protected val route: String, vararg params: String) {
         private const val TOOL_SCREEN_ROUTE = "instruments"
 
         private const val PROFILE_SCREEN_ROUTE = "instruments"
-
+        
         private const val SEARCH_FOOD_SCREEN_ROUTE = "search_food"
 
         //Arguments
 
-        //Graph routes
-        const val PROFILE_GRAPH_ROUTE = "profile_graph"
-
-        const val MEALS_GRAPH_ROUTE = "meals_graph"
 
     }
 

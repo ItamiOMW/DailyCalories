@@ -26,6 +26,23 @@ class NavigationState(
         }
     }
 
+
+    fun navigateToWithPopUpToStartDestination(
+        route: String,
+        startDestinationRoute: String
+    ) {
+        navHostController.graph.setStartDestination(startDestinationRoute)
+        navHostController.navigate(
+            route,
+        ) {
+            popUpTo(navHostController.graph.findStartDestination().id) {
+                saveState = true
+            }
+            restoreState = true
+            launchSingleTop = true
+        }
+    }
+
     fun navigateToWithPopUpTo(
         route: String,
         popUpToRoute: String,

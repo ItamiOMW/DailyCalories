@@ -1,15 +1,22 @@
 package com.example.dailycalories.domain.model.user
 
+import com.example.dailycalories.R
 
-sealed class ActivityLevel(val name: String) {
 
-    object Low : ActivityLevel(LOW)
+sealed class ActivityLevel(
+    val type: String,
+    val nameResId: Int,
+) {
 
-    object Medium : ActivityLevel(MEDIUM)
+    object Low : ActivityLevel(LOW, R.string.title_activity_low)
 
-    object High : ActivityLevel(HIGH)
+    object Medium : ActivityLevel(MEDIUM, R.string.title_activity_medium)
 
-    object SuperHigh : ActivityLevel(SUPER_HIGH)
+    object High : ActivityLevel(HIGH, R.string.title_activity_high)
+
+    object SuperHigh : ActivityLevel(SUPER_HIGH, R.string.title_activity_superhigh)
+
+    object Unknown : ActivityLevel(UNKNOWN, R.string.title_activity_unknown)
 
     companion object {
 
@@ -17,15 +24,15 @@ sealed class ActivityLevel(val name: String) {
         private const val MEDIUM = "MEDIUM"
         private const val HIGH = "HIGH"
         private const val SUPER_HIGH = "SUPERHIGH"
-
-        private val smth = Low.name
+        private const val UNKNOWN = "UNKNOWN"
 
         fun fromString(string: String): ActivityLevel {
             return when (string) {
-                Low.name -> Low
-                Medium.name -> Medium
-                High.name -> High
-                SuperHigh.name -> SuperHigh
+                Low.type -> Low
+                Medium.type -> Medium
+                High.type -> High
+                SuperHigh.type -> SuperHigh
+                Unknown.type -> Unknown
                 else -> throw Exception("Unknown Activity level: $string")
             }
         }

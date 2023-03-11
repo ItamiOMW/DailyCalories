@@ -1,31 +1,31 @@
 package com.example.dailycalories.presentation.screens.main
 
 import com.example.dailycalories.R
-import com.example.dailycalories.navigation.Screen
+import com.example.dailycalories.navigation.graph.Graph
 
 sealed class BottomNavItem(
     val titleResId: Int,
     val iconResId: Int,
-    val screen: Screen
+    val route: String
 ) {
 
 
     object Home: BottomNavItem(
         titleResId = R.string.nav_item_title_home,
         iconResId = R.drawable.menu,
-        screen = Screen.HomeScreen
+        route = Graph.HOME
     )
 
     object Meals: BottomNavItem(
         titleResId = R.string.nav_item_title_meals,
         iconResId = R.drawable.eating,
-        screen = Screen.MealsScreen
+        route = Graph.MEALS
     )
 
     object Profile: BottomNavItem(
         titleResId = R.string.nav_item_title_profile,
         iconResId = R.drawable.profile,
-        screen = Screen.ProfileScreen
+        route = Graph.PROFILE
     )
 
 
