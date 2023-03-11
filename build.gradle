@@ -22,7 +22,7 @@ buildscript {
         accompanist_permissions_version = '0.28.0'
         accompanist_systemui_controller_version = '0.27.0'
         coil_compose_version = '2.2.2'
-        viewpager_version = '0.23.1'
+        viewpager_version = '0.24.1-alpha'
         datastore_version = '1.0.0'
     }
     dependencies {

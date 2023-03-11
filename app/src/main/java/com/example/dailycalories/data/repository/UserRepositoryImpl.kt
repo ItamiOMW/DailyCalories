@@ -26,7 +26,7 @@ class UserRepositoryImpl @Inject constructor(
 
     override suspend fun saveGender(gender: Gender) {
         dataStore.edit { preferences ->
-            preferences[UserRepository.KEY_GENDER] = gender.name
+            preferences[UserRepository.KEY_GENDER] = gender.type
         }
     }
 
@@ -50,13 +50,13 @@ class UserRepositoryImpl @Inject constructor(
 
     override suspend fun saveActivityLevel(level: ActivityLevel) {
         dataStore.edit { preferences ->
-            preferences[UserRepository.KEY_ACTIVITY_LEVEL] = level.name
+            preferences[UserRepository.KEY_ACTIVITY_LEVEL] = level.type
         }
     }
 
     override suspend fun saveGoalType(type: GoalType) {
         dataStore.edit { preferences ->
-            preferences[UserRepository.KEY_GOAL_TYPE] = type.name
+            preferences[UserRepository.KEY_GOAL_TYPE] = type.type
         }
     }
 
@@ -86,11 +86,11 @@ class UserRepositoryImpl @Inject constructor(
 
     override suspend fun getUserInfo(): Flow<UserInfo> {
         return dataStore.data.map { preferences ->
-            val gender = preferences[UserRepository.KEY_GENDER] ?: Gender.Male.name
-            val goalType = preferences[UserRepository.KEY_GOAL_TYPE] ?: GoalType.KeepWeight.name
+            val gender = preferences[UserRepository.KEY_GENDER] ?: Gender.Unknown.type
+            val goalType = preferences[UserRepository.KEY_GOAL_TYPE] ?: GoalType.Unknown.type
             val activityLevel =
-                preferences[UserRepository.KEY_ACTIVITY_LEVEL] ?: ActivityLevel.Medium.name
-            val age = preferences[UserRepository.KEY_AGE] ?: 20
+                preferences[UserRepository.KEY_ACTIVITY_LEVEL] ?: ActivityLevel.Unknown.type
+            val age = preferences[UserRepository.KEY_AGE] ?: 25
             val height = preferences[UserRepository.KEY_HEIGHT] ?: 170
             val weight = preferences[UserRepository.KEY_WEIGHT] ?: 70f
             val dailyCarbs = preferences[UserRepository.KEY_CARBS] ?: 0f

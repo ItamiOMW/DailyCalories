@@ -3,15 +3,51 @@
     <string name="nav_item_title_home">Home</string>
     <string name="nav_item_title_profile">Profile</string>
     <string name="nav_item_title_meals">Meals</string>
+
     <string name="bottom_bar_icon_desc">BottomBar screen icon. Click to navigate</string>
+
     <string name="kCals_count">%s kCals</string>
+    <string name="count_grams_short">%s g</string>
+
     <string name="text_consumed">Consumed</string>
+
     <string name="title_yesterday">Yesterday</string>
     <string name="title_today">Today</string>
     <string name="title_tomorrow">Tomorrow</string>
-    <string name="count_grams_short">%s g</string>
     <string name="title_protein">Protein</string>
     <string name="title_carbs">Carbs</string>
     <string name="title_fat">Fat</string>
     <string name="title_kCal">kCal</string>
+    <string name="title_lose_weight">Lose Weight</string>
+    <string name="title_keep_weight">Keep Weight</string>
+    <string name="title_gain_weight">Gain Weight</string>
+    <string name="title_unknown">Unknown</string>
+    <string name="title_unknown_goal">Unknown Goal</string>
+    <string name="title_male">Male</string>
+    <string name="title_female">Female</string>
+    <string name="title_unknown_gender">Unknown Gender</string>
+    <string name="title_goal">Goal</string>
+    <string name="title_gender">Gender</string>
+    <string name="title_age">Age</string>
+    <string name="title_height_cm">Height(cm)</string>
+    <string name="title_weight_kg">Weight(kg)</string>
+    <string name="title_height">Height</string>
+    <string name="title_weight">Weight</string>
+    <string name="title_activity_level">Activity Level</string>
+    <string name="title_activity_low">Low</string>
+    <string name="title_activity_medium">Medium</string>
+    <string name="title_activity_high">High</string>
+    <string name="title_activity_superhigh">Super High</string>
+    <string name="title_activity_unknown">Unknown activity level</string>
+
+    <string name="error_specify_actual_age">Specify the actual age</string>
+    <string name="error_specify_actual_weight">Specify the actual weight</string>
+    <string name="error_specify_actual_height">Specify the actual height</string>
+    <string name="error_choose_gender">Choose your gender</string>
+    <string name="error_choose_goal">Choose your goal</string>
+    <string name="error_choose_activity_level">Choose your activity level</string>
+
+    <string name="desc_navigate_to_previous">Navigate to previous screen</string>
+
+
 </resources>

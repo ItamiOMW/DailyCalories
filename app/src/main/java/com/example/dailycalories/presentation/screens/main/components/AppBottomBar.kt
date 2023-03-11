@@ -35,7 +35,7 @@ fun AppBottomBar(
 
             val selected = backStackEntry?.destination?.hierarchy
                 ?.any { navDestination ->
-                    navDestination.route == navItem.screen.fullRoute
+                    navDestination.route == navItem.route
                 } ?: false
 
             BottomNavigationItem(

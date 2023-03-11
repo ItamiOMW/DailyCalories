@@ -12,4 +12,23 @@ data class UserInfo(
     val dailyProteins: Float,
     val dailyFat: Float,
     val dailyKCals: Int
-)
+) {
+
+    companion object {
+
+        val DEFAULT = UserInfo(
+            gender = Gender.Unknown,
+            goalType = GoalType.Unknown,
+            activityLevel = ActivityLevel.Unknown,
+            age = 20,
+            height = 170,
+            weight = 70f,
+            dailyCarbs = 0f,
+            dailyProteins = 0f,
+            dailyFat = 0f,
+            dailyKCals = 0
+        )
+
+    }
+
+}
