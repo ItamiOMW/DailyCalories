@@ -48,7 +48,7 @@ fun AppBottomBar(
                 icon = {
                     Icon(
                         painter = painterResource(id = navItem.iconResId),
-                        contentDescription = stringResource(R.string.bottom_bar_icon_desc),
+                        contentDescription = stringResource(R.string.desc_bottom_bar_icon),
                         modifier = Modifier.size(25.dp)
                     )
                 }

@@ -54,7 +54,7 @@ fun MainScreen(
                     ),
                     backStackEntry = backStackEntry,
                     onNavItemClick = { navItem ->
-                        navState.navigateToWithPopUpToStartDestination(navItem.route)
+                        navState.navigateWithPopUpToStartDestination(navItem.route)
                     }
                 )
             }

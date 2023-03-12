@@ -1,13 +1,16 @@
 <resources>
     <string name="app_name">Daily Calories</string>
+
     <string name="nav_item_title_home">Home</string>
     <string name="nav_item_title_profile">Profile</string>
     <string name="nav_item_title_meals">Meals</string>
 
-    <string name="bottom_bar_icon_desc">BottomBar screen icon. Click to navigate</string>
+    <string name="desc_bottom_bar_icon">BottomBar screen icon. Click to navigate</string>
+    <string name="desc_navigate_to_previous">Navigate to previous screen</string>
 
-    <string name="kCals_count">%s kCals</string>
+    <string name="count_kCals">%s kCals</string>
     <string name="count_grams_short">%s g</string>
+    <string name="name_count_grams">%s: %.2f g</string>
 
     <string name="text_consumed">Consumed</string>
 
@@ -15,8 +18,10 @@
     <string name="title_today">Today</string>
     <string name="title_tomorrow">Tomorrow</string>
     <string name="title_protein">Protein</string>
+    <string name="title_proteins">Proteins</string>
     <string name="title_carbs">Carbs</string>
     <string name="title_fat">Fat</string>
+    <string name="title_calories">Calories</string>
     <string name="title_kCal">kCal</string>
     <string name="title_lose_weight">Lose Weight</string>
     <string name="title_keep_weight">Keep Weight</string>
@@ -39,6 +44,8 @@
     <string name="title_activity_high">High</string>
     <string name="title_activity_superhigh">Super High</string>
     <string name="title_activity_unknown">Unknown activity level</string>
+    <string name="title_recom_cal_intake">Recommended Calorie Intake</string>
+    <string name="title_save">Save</string>
 
     <string name="error_specify_actual_age">Specify the actual age</string>
     <string name="error_specify_actual_weight">Specify the actual weight</string>
@@ -47,7 +54,10 @@
     <string name="error_choose_goal">Choose your goal</string>
     <string name="error_choose_activity_level">Choose your activity level</string>
 
-    <string name="desc_navigate_to_previous">Navigate to previous screen</string>
+    <string name="explanation_keep_weight">To keep weight, it\'s recommended to stick to the following values:</string>
+    <string name="explanation_lose_weight">To lose weight, it\'s recommended to stick to the following values:</string>
+    <string name="explanation_gain_weight">To gain weight, it\'s recommended to stick to the following values:</string>
+    <string name="text_you_can_change_cal_intake_in_profile">You always can change Calorie Intake in Profile Section</string>
 
 
 </resources>

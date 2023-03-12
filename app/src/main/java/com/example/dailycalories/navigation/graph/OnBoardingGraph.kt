@@ -6,14 +6,13 @@ import androidx.navigation.NavGraphBuilder
 import com.example.dailycalories.navigation.NavigationState
 import com.example.dailycalories.navigation.Screen
 import com.example.dailycalories.presentation.screens.onboarding.OnboardingScreen
-import com.example.dailycalories.presentation.screens.recommended_nutrition.RecommendedNutritionScreen
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.navigation
 
 
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.onBoardingGraph(
-    navState: NavigationState
+    navState: NavigationState,
 ) {
     navigation(
         startDestination = Screen.OnboardingScreen.fullRoute,
@@ -24,16 +23,12 @@ fun NavGraphBuilder.onBoardingGraph(
         ) {
             OnboardingScreen(
                 onNavigateForward = {
-                    navState.navigateToWithPopUpToStartDestination(
-                        route = Screen.RecommendedNutritionScreen.fullRoute,
+                    navState.navigateAndSetNewStartDestination(
+                        Graph.MAIN,
+                        Graph.MAIN
                     )
                 },
             )
-        }
-        composable(
-            route = Screen.RecommendedNutritionScreen.fullRoute
-        ) {
-            RecommendedNutritionScreen()
         }
     }
 }
