@@ -12,7 +12,7 @@ class NavigationState(
     val navHostController: NavHostController,
 ) {
 
-    fun navigateToWithPopUpToStartDestination(
+    fun navigateWithPopUpToStartDestination(
         route: String,
     ) {
         navHostController.navigate(
@@ -27,21 +27,22 @@ class NavigationState(
     }
 
 
-    fun navigateToWithPopUpToStartDestination(
+    fun navigateAndSetNewStartDestination(
         route: String,
-        startDestinationRoute: String
+        startDestinationRoute: String,
     ) {
+        navHostController.navigate(
+            route,
+        ) {
+            popUpTo(navHostController.graph.findStartDestination().id) {
+                inclusive = true
+            }
+            restoreState = true
+            launchSingleTop = true
+        }
         navHostController.graph.setStartDestination(startDestinationRoute)
-        navHostController.navigate(
-            route,
-        ) {
-            popUpTo(navHostController.graph.findStartDestination().id) {
-                saveState = true
-            }
-            restoreState = true
-            launchSingleTop = true
-        }
     }
+
 
     fun navigateToWithPopUpTo(
         route: String,

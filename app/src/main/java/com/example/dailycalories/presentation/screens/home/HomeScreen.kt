@@ -81,7 +81,7 @@ private fun HeaderSection(
         modifier = Modifier.padding(10.dp)
     ) {
         Text(
-            text = stringResource(R.string.kCals_count, kCals),
+            text = stringResource(R.string.count_kCals, kCals),
             style = MaterialTheme.typography.h4.copy(fontWeight = FontWeight.SemiBold),
             modifier = Modifier.padding(start = 10.dp),
         )

@@ -9,11 +9,10 @@ sealed class Screen(protected val route: String, vararg params: String) {
     }
 
 
-    
     object OnboardingScreen: Screen(route = ONBOARDING_SCREEN_ROUTE)
     
     
-    object RecommendedNutritionScreen: Screen(route = RECOMMENDED_NUTRITION_SCREEN_ROUTE)
+    object DailyCalorieIntakeScreen: Screen(route = DAILY_CALORIE_INTAKE_SCREEN_ROUTE)
             
             
     object HomeScreen : Screen(route = HOME_SCREEN_ROUTE)
@@ -33,7 +32,7 @@ sealed class Screen(protected val route: String, vararg params: String) {
         //Screen routes
         private const val ONBOARDING_SCREEN_ROUTE = "onboarding"
 
-        private const val RECOMMENDED_NUTRITION_SCREEN_ROUTE = "recommended_nutrition"
+        private const val DAILY_CALORIE_INTAKE_SCREEN_ROUTE = "set_nutrition"
 
         private const val HOME_SCREEN_ROUTE = "home"
 
@@ -46,7 +45,7 @@ sealed class Screen(protected val route: String, vararg params: String) {
         private const val SEARCH_FOOD_SCREEN_ROUTE = "search_food"
 
         //Arguments
-
+        const val USER_INFO_ARG = "user_info_arg"
 
     }
 

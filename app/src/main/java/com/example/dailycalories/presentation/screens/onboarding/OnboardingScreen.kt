@@ -39,6 +39,8 @@ fun OnboardingScreen(
 
     val state = viewModel.userInfoState
 
+    val recommendedDailyIntakeState = viewModel.recommendedDailyIntakeState
+
     val pagerState = rememberPagerState()
 
     val scaffoldState = rememberScaffoldState()
@@ -137,7 +139,34 @@ fun OnboardingScreen(
                     }
                 )
             }
-        )
+        ),
+        TabItem(
+            title = stringResource(R.string.title_recom_cal_intake),
+            screen = {
+                RecommendedDailyCaloriesIntake(
+                    fat = recommendedDailyIntakeState.recommendedFat,
+                    proteins = recommendedDailyIntakeState.recommendedProteins,
+                    carbs = recommendedDailyIntakeState.recommendedCarbs,
+                    calories = recommendedDailyIntakeState.recommendedKCals,
+                    goalType = state.goalType,
+                    onSaveClicked = { fat: Float, proteins: Float, carbs: Float, calories: Int ->
+                        viewModel.onEvent(
+                            OnboardingEvent.SaveDailyCaloriesIntake(
+                                fat = fat,
+                                proteins = proteins,
+                                carbs = carbs,
+                                calories = calories
+                            )
+                        )
+                    },
+                    onPreviousClicked = {
+                        coroutineScope.launch {
+                            pagerState.animateScrollToPage(pagerState.currentPage - 1)
+                        }
+                    },
+                )
+            }
+        ),
     )
 
 
