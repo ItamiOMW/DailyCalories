@@ -9,8 +9,11 @@
     <string name="desc_navigate_to_previous">Navigate to previous screen</string>
 
     <string name="count_kCals">%s kCals</string>
-    <string name="count_grams_short">%s g</string>
-    <string name="name_count_grams">%s: %.2f g</string>
+    <string name="count_calories">%.0f Calories</string>
+    <string name="count_grams_short">%.0f g</string>
+    <string name="count_consumed_and_need_to_consume">%.0f / %.0f g</string>
+    <string name="percent_progress">%s\%%</string>
+    <string name="name_count_grams">%s: %.0f g</string>
 
     <string name="text_consumed">Consumed</string>
 

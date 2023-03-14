@@ -43,8 +43,8 @@ fun AppBottomBar(
                 onClick = {
                     onNavItemClick(navItem)
                 },
-                selectedContentColor = MaterialTheme.colors.secondaryVariant,
-                unselectedContentColor = MaterialTheme.colors.secondary,
+                selectedContentColor = MaterialTheme.colors.secondary,
+                unselectedContentColor = MaterialTheme.colors.onBackground,
                 icon = {
                     Icon(
                         painter = painterResource(id = navItem.iconResId),

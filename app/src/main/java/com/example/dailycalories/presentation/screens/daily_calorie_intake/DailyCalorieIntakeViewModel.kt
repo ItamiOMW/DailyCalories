@@ -78,7 +78,7 @@ class DailyCalorieIntakeViewModel @Inject constructor(
                     state.carbs,
                     state.fat,
                     state.proteins,
-                    state.kCals
+                    state.cals
                 )
             }
         }
@@ -95,7 +95,7 @@ class DailyCalorieIntakeViewModel @Inject constructor(
                 carbs = carbs,
                 fat = fat
             )
-            state = state.copy(kCals = calories)
+            state = state.copy(cals = calories)
         }
     }
 
@@ -156,9 +156,9 @@ class DailyCalorieIntakeViewModel @Inject constructor(
                     isInitializing = false,
                     recommendedCarbs = carbs,
                     recommendedFat = fat,
-                    recommendedKCals = calories,
+                    recommendedCals = calories,
                     recommendedProteins = proteins,
-                    kCals = userInfo.dailyKCals,
+                    cals = userInfo.dailyCals,
                     proteins = userInfo.dailyProteins,
                     carbs = userInfo.dailyCarbs,
                     fat = userInfo.dailyFat,
