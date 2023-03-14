@@ -107,7 +107,7 @@ class UserRepositoryImpl @Inject constructor(
                 dailyCarbs = dailyCarbs,
                 dailyProteins = dailyProteins,
                 dailyFat = dailyFat,
-                dailyKCals = dailyCalories
+                dailyCals = dailyCalories
             )
         }
     }

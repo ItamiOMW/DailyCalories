@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dailycalories.domain.repository.MealRepository
+import com.example.dailycalories.domain.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -13,6 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val mealRepository: MealRepository,
+    private val userRepository: UserRepository,
 ) : ViewModel() {
 
     var state by mutableStateOf(HomeState())
@@ -21,8 +23,11 @@ class HomeViewModel @Inject constructor(
 
     private var getMealsJob: Job? = null
 
+    private var getDailyNutritionJob: Job? = null
+
     init {
         getMeals(state.date)
+        getDailyNutrition()
     }
 
     fun onEvent(event: HomeEvent) {
@@ -50,7 +55,8 @@ class HomeViewModel @Inject constructor(
                     fat = meals.sumOf { it.products.sumOf { it.fat.toDouble() } }.toFloat()
                 }
                 val proteinsJob = async {
-                    proteins = meals.sumOf { it.products.sumOf { it.proteins.toDouble() } }.toFloat()
+                    proteins =
+                        meals.sumOf { it.products.sumOf { it.proteins.toDouble() } }.toFloat()
                 }
                 val kCalsJob = async {
                     kCals = meals.sumOf { it.products.sumOf { it.kCals.toDouble() } }.toFloat()
@@ -60,9 +66,27 @@ class HomeViewModel @Inject constructor(
                     meals = meals,
                     carbs = carbs,
                     fat = fat,
-                    kCals = kCals,
+                    cals = kCals,
                     proteins = proteins,
                     date = date
+                )
+            }
+        }
+    }
+
+    private fun getDailyNutrition() {
+        getDailyNutritionJob?.cancel()
+        getDailyNutritionJob = viewModelScope.launch {
+            userRepository.getUserInfo().collect { userInfo ->
+                val dailyKCals = userInfo.dailyCals
+                val dailyProteins = userInfo.dailyProteins
+                val dailyCarbs = userInfo.dailyCarbs
+                val dailyFat = userInfo.dailyFat
+                state = state.copy(
+                    dailyCals = dailyKCals.toFloat(),
+                    dailyFat = dailyFat,
+                    dailyProteins = dailyProteins,
+                    dailyCarbs = dailyCarbs
                 )
             }
         }

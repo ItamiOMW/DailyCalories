@@ -69,7 +69,7 @@ fun RecommendedDailyCaloriesIntake(
             shape = MaterialTheme.shapes.medium,
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = MaterialTheme.colors.surface,
-                contentColor = MaterialTheme.colors.secondary
+                contentColor = MaterialTheme.colors.onSurface
             ),
             elevation = ButtonDefaults.elevation(defaultElevation = 0.dp)
         ) {

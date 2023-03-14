@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
             DailyCaloriesTheme() {
 
                 val systemUiController = rememberSystemUiController().apply {
-                    setSystemBarsColor(MaterialTheme.colors.primaryVariant)
+                    setSystemBarsColor(MaterialTheme.colors.background)
                 }
 
                 if (viewModel.state != MainScreenState.Initial) {

@@ -223,7 +223,7 @@ class OnboardingViewModel @Inject constructor(
                 awaitAll(carbsJob, proteinsJob, fatJob)
                 recommendedDailyIntakeState = RecommendedDailyIntakeState(
                     recommendedProteins = proteins,
-                    recommendedKCals = calories,
+                    recommendedCals = calories,
                     recommendedFat = fat,
                     recommendedCarbs = carbs,
                     isLoading = false

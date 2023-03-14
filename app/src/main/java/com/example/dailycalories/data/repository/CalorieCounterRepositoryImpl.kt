@@ -31,13 +31,15 @@ class CalorieCounterRepositoryImpl @Inject constructor(
         //bmr = basal metabolic rate
         val bmr = when (gender) {
             is Gender.Female -> {
-                655.1 + (9.563 * weight) + (1.85 * height) - (4.676 * age) * activityLevelMultiplier
+                655.1 + (9.563 * weight) + (1.85 * height) - (4.676 * age)
             }
             is Gender.Male -> {
-                66.5 + (13.75 * weight) + (5.003 * height) - (6.775 * age) * activityLevelMultiplier
+                66.5 + (13.75 * weight) + (5.003 * height) - (6.775 * age)
             }
             is Gender.Unknown -> 2250.0 //Average calories
         }
+        //AMR = bmr multiplied by ActivityLevelMultiplier
+        val amr = bmr * activityLevelMultiplier
         //To lose weight it's recommended to reduce 3850 calories per week OR 550 calories per day
         //To gain weight it's recommended to add 3850 calories per week OR 550 calories per day
         //To keep weight it's recommended to keep your BMR the same
@@ -47,8 +49,7 @@ class CalorieCounterRepositoryImpl @Inject constructor(
             is GoalType.GainWeight -> 550
             is GoalType.Unknown -> 0
         }
-
-        return (bmr + caloriesAdjustment).toInt()
+        return (amr + caloriesAdjustment).toInt()
     }
 
     override suspend fun calculateCarbs(

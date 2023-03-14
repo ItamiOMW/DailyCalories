@@ -11,7 +11,7 @@ data class UserInfo(
     val dailyCarbs: Float,
     val dailyProteins: Float,
     val dailyFat: Float,
-    val dailyKCals: Int
+    val dailyCals: Int
 ) {
 
     companion object {
@@ -26,7 +26,7 @@ data class UserInfo(
             dailyCarbs = 0f,
             dailyProteins = 0f,
             dailyFat = 0f,
-            dailyKCals = 0
+            dailyCals = 0
         )
 
     }

@@ -147,7 +147,7 @@ fun OnboardingScreen(
                     fat = recommendedDailyIntakeState.recommendedFat,
                     proteins = recommendedDailyIntakeState.recommendedProteins,
                     carbs = recommendedDailyIntakeState.recommendedCarbs,
-                    calories = recommendedDailyIntakeState.recommendedKCals,
+                    calories = recommendedDailyIntakeState.recommendedCals,
                     goalType = state.goalType,
                     onSaveClicked = { fat: Float, proteins: Float, carbs: Float, calories: Int ->
                         viewModel.onEvent(
