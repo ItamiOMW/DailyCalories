@@ -1,4 +1,4 @@
-package com.example.dailycalories.utils
+package com.example.dailycalories.domain.utils
 
 sealed class Response<out T> {
 

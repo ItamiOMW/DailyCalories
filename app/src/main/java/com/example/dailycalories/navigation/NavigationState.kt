@@ -44,26 +44,22 @@ class NavigationState(
     }
 
 
-    fun navigateToWithPopUpTo(
+    fun navigateTo(
         route: String,
-        popUpToRoute: String,
     ) {
         navHostController.navigate(
             route,
         ) {
-            popUpTo(popUpToRoute) {
-                saveState = true
+            navHostController.currentDestination?.id?.let { id ->
+                popUpTo(id) {
+                    saveState = true
+                }
             }
             restoreState = true
             launchSingleTop = true
         }
     }
 
-    fun navigateToWithoutPopUpTo(
-        route: String,
-    ) {
-        navHostController.navigate(route)
-    }
 
 }
 

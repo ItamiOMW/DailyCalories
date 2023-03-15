@@ -61,7 +61,7 @@ fun ActivityLevelPagerScreen(
             }
         )
         FloatingActionButton(
-            backgroundColor = MaterialTheme.colors.secondaryVariant,
+            backgroundColor = MaterialTheme.colors.secondary,
             contentColor = White,
             onClick = {
                 onNextClicked(ActivityLevel.fromString(selectedActivityLevel.value))

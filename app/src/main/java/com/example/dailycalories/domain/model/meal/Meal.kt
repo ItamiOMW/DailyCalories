@@ -7,6 +7,10 @@ data class Meal(
     val id: Long = UNKNOWN_ID,
     val name: String,
     val date: String,
-    val time: Int,
+    val timeSeconds: Long,
+    val calories: Float,
+    val proteins: Float,
+    val carbs: Float,
+    val fat: Float,
     val products: List<MealFoodProduct>,
 )

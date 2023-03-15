@@ -16,7 +16,7 @@ interface MealRepository {
 
     suspend fun editMeal(meal: Meal)
 
-    suspend fun removeMeal(id: Long)
+    suspend fun deleteMeal(id: Long)
 
     suspend fun addMealFoodProductToMeal(mealId: Long, mealFoodProduct: MealFoodProduct)
 

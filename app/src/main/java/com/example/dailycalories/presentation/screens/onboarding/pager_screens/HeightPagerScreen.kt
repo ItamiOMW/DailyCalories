@@ -62,7 +62,7 @@ fun HeightPagerScreen(
             keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
         )
         FloatingActionButton(
-            backgroundColor = MaterialTheme.colors.secondaryVariant,
+            backgroundColor = MaterialTheme.colors.secondary,
             contentColor = White,
             onClick = {
                 onNextClicked(enteredHeight.value)

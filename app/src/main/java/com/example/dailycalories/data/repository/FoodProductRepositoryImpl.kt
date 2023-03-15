@@ -4,7 +4,7 @@ import com.example.dailycalories.data.mapper.toFoodProductInfo
 import com.example.dailycalories.data.remote.OpenFoodApiService
 import com.example.dailycalories.domain.model.food_product.FoodProductInfo
 import com.example.dailycalories.domain.repository.FoodProductRepository
-import com.example.dailycalories.utils.Response
+import com.example.dailycalories.domain.utils.Response
 import javax.inject.Inject
 
 class FoodProductRepositoryImpl @Inject constructor(

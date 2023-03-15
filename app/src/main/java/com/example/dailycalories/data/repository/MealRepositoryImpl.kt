@@ -55,7 +55,7 @@ class MealRepositoryImpl @Inject constructor(
         mealDao.updateMeal(mealEntity)
     }
 
-    override suspend fun removeMeal(id: Long) {
+    override suspend fun deleteMeal(id: Long) {
         mealDao.deleteMeal(id)
     }
 

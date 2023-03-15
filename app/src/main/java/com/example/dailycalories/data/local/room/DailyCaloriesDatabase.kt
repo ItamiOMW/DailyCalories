@@ -12,7 +12,7 @@ import com.example.dailycalories.data.local.room.model.MealFoodProductEntity
         MealFoodProductEntity::class,
     ],
     exportSchema = false,
-    version = 1
+    version = 3
 )
 abstract class DailyCaloriesDatabase : RoomDatabase() {
 
