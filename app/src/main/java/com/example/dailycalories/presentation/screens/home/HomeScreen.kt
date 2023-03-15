@@ -39,7 +39,7 @@ fun HomeScreen(
             .fillMaxSize(),
     ) {
         Spacer(modifier = Modifier.fillMaxHeight(0.1f))
-        HeaderSection(kCalsConsumed = state.cals, state.dailyCals)
+        HeaderSection(calsConsumed = state.cals, state.dailyCals)
         Spacer(modifier = Modifier.fillMaxHeight(0.1f))
         DaysSection(
             date = state.date,
@@ -65,11 +65,11 @@ fun HomeScreen(
 
 @Composable
 private fun HeaderSection(
-    kCalsConsumed: Float,
-    kCalsToConsumeInTotal: Float,
+    calsConsumed: Float,
+    calsToConsumeInTotal: Float,
 ) {
-    val progress = remember(kCalsConsumed, kCalsToConsumeInTotal) {
-        kCalsConsumed / kCalsToConsumeInTotal
+    val progress = remember(calsConsumed, calsToConsumeInTotal) {
+        calsConsumed / calsToConsumeInTotal
     }
 
     Row(
@@ -82,13 +82,13 @@ private fun HeaderSection(
     ) {
         Column() {
             Text(
-                text = stringResource(R.string.count_calories, 1000.0f),
+                text = stringResource(R.string.count_calories, calsConsumed),
                 style = MaterialTheme.typography.h4.copy(fontWeight = FontWeight.SemiBold),
             )
             Text(
                 text = stringResource(R.string.text_consumed),
                 style = MaterialTheme.typography.h4.copy(fontWeight = FontWeight.SemiBold),
-                color = MaterialTheme.colors.onSecondary,
+                color = MaterialTheme.colors.primaryVariant,
             )
         }
         CircularProgressBar(
@@ -132,21 +132,21 @@ private fun DaysSection(
             Text(
                 text = stringResource(R.string.title_yesterday),
                 style = MaterialTheme.typography.h6.copy(fontWeight = FontWeight.Medium),
-                color = if (date == yesterdaysDate) MaterialTheme.colors.onPrimary else MaterialTheme.colors.onSecondary,
+                color = if (date == yesterdaysDate) MaterialTheme.colors.primary else MaterialTheme.colors.primaryVariant,
             )
         }
         TextButton(onClick = { onDateChange(todaysDate) }) {
             Text(
                 text = stringResource(R.string.title_today),
                 style = MaterialTheme.typography.h6.copy(fontWeight = FontWeight.Medium),
-                color = if (date == todaysDate) MaterialTheme.colors.onPrimary else MaterialTheme.colors.onSecondary,
+                color = if (date == todaysDate) MaterialTheme.colors.primary else MaterialTheme.colors.primaryVariant,
             )
         }
         TextButton(onClick = { onDateChange(tomorrowsDate) }) {
             Text(
                 text = stringResource(R.string.title_tomorrow),
                 style = MaterialTheme.typography.h6.copy(fontWeight = FontWeight.Medium),
-                color = if (date == tomorrowsDate) MaterialTheme.colors.onPrimary else MaterialTheme.colors.onSecondary,
+                color = if (date == tomorrowsDate)MaterialTheme.colors.primary else MaterialTheme.colors.primaryVariant,
             )
         }
     }

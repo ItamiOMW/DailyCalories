@@ -46,7 +46,7 @@ fun GoalPagerScreen(
             }
         )
         FloatingActionButton(
-            backgroundColor = MaterialTheme.colors.secondaryVariant,
+            backgroundColor = MaterialTheme.colors.secondary,
             contentColor = White,
             onClick = {
                 onNextClicked(GoalType.fromString(selectedGoalType.value))

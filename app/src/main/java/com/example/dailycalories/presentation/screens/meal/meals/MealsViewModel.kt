@@ -1,4 +1,4 @@
-package com.example.dailycalories.presentation.screens.home
+package com.example.dailycalories.presentation.screens.meal.meals
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -8,38 +8,43 @@ import androidx.lifecycle.viewModelScope
 import com.example.dailycalories.domain.repository.MealRepository
 import com.example.dailycalories.domain.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
-    private val mealRepository: MealRepository,
+class MealsViewModel @Inject constructor(
     private val userRepository: UserRepository,
+    private val mealRepository: MealRepository,
 ) : ViewModel() {
+
+
+    var state by mutableStateOf(MealsState())
+        private set
 
     private var getMealsJob: Job? = null
 
-
-    var state by mutableStateOf(HomeState())
-        private set
-
     init {
-        getMeals(state.date)
+//        getMeals(date = state.date)
         getDailyNutrition()
     }
 
-    fun onEvent(event: HomeEvent) {
+    fun onEvent(event: MealsEvent) {
         when (event) {
-            is HomeEvent.ChangeDate -> {
+            is MealsEvent.ChangeDate -> {
                 if (event.date == state.date) return
-                getMeals(date = event.date)
+                getMeals(event.date)
             }
-            is HomeEvent.DeleteMeal -> {
+            is MealsEvent.ShowDatePickerDialog -> {
+                state = state.copy(showDatePickerDialog = event.show)
+            }
+            is MealsEvent.DeleteMeal -> {
                 deleteMeal(event.meal.id)
             }
         }
     }
-
 
     private fun deleteMeal(id: Long) {
         viewModelScope.launch {
@@ -54,25 +59,27 @@ class HomeViewModel @Inject constructor(
                 var carbs = 0f
                 var fat = 0f
                 var proteins = 0f
-                var calories = 0f
+                var kCals = 0f
                 val carbsJob = async {
-                    carbs = meals.sumOf { it.carbs.toDouble() }.toFloat()
+                    carbs = meals.sumOf { it.products.sumOf { it.carbs.toDouble() } }.toFloat()
                 }
                 val fatJob = async {
-                    fat = meals.sumOf { it.fat.toDouble() }.toFloat()
+                    fat = meals.sumOf { it.products.sumOf { it.fat.toDouble() } }.toFloat()
                 }
                 val proteinsJob = async {
-                    proteins = meals.sumOf { it.proteins.toDouble() }.toFloat()
+                    proteins = meals.sumOf {
+                        it.products.sumOf { it.proteins.toDouble() }
+                    }.toFloat()
                 }
                 val kCalsJob = async {
-                    calories = meals.sumOf { it.calories.toDouble() }.toFloat()
+                    kCals = meals.sumOf { it.products.sumOf { it.kCals.toDouble() } }.toFloat()
                 }
                 awaitAll(carbsJob, fatJob, proteinsJob, kCalsJob)
                 state = state.copy(
                     meals = meals,
                     carbs = carbs,
                     fat = fat,
-                    cals = calories,
+                    cals = kCals,
                     proteins = proteins,
                     date = date
                 )
@@ -96,5 +103,6 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
+
 
 }

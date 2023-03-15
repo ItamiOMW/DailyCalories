@@ -62,7 +62,7 @@ fun GenderPagerScreen(
             }
         )
         FloatingActionButton(
-            backgroundColor = MaterialTheme.colors.secondaryVariant,
+            backgroundColor = MaterialTheme.colors.secondary,
             contentColor = White,
             onClick = {
                 onNextClicked(Gender.fromString(selectedGenderType.value))

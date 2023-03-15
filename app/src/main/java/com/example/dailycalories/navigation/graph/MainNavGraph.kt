@@ -2,18 +2,24 @@ package com.example.dailycalories.navigation.graph
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.example.dailycalories.navigation.NavigationState
 import com.example.dailycalories.navigation.Screen
 import com.example.dailycalories.presentation.screens.home.HomeScreen
-import com.example.dailycalories.presentation.screens.meals.MealsScreen
+import com.example.dailycalories.presentation.screens.meal.add_meal.AddMealScreen
+import com.example.dailycalories.presentation.screens.meal.edit_meal.EditMealScreen
+import com.example.dailycalories.presentation.screens.meal.meal_detail.MealDetailScreen
+import com.example.dailycalories.presentation.screens.meal.meals.MealsScreen
 import com.example.dailycalories.presentation.screens.profile.ProfileScreen
+import com.example.dailycalories.utils.UNKNOWN_ID
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.navigation
 
 
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.mainNavGraph(
-    navState: NavigationState
+    navState: NavigationState,
 ) {
     navigation(
         route = Graph.MAIN,
@@ -53,7 +59,45 @@ fun NavGraphBuilder.mealsScreenNavGraph(
         composable(
             route = Screen.MealsScreen.fullRoute
         ) {
-            MealsScreen()
+            MealsScreen(
+                onNavigateToAddMeal = {
+                    navState.navigateTo(route = Screen.AddMealScreen.fullRoute)
+                },
+                onNavigateToEditMeal = { id ->
+                    navState.navigateTo(route = Screen.EditMealScreen.getRouteWithArgs(id))
+                },
+                onNavigateToMealDetail = { id ->
+                    navState.navigateTo(route = Screen.MealDetailScreen.getRouteWithArgs(id))
+                }
+            )
+        }
+        composable(
+            route = Screen.AddMealScreen.fullRoute,
+
+            ) {
+            AddMealScreen()
+        }
+        composable(
+            route = Screen.EditMealScreen.fullRoute,
+            arguments = listOf(
+                navArgument(Screen.MEAL_ID_ARG) {
+                    type = NavType.LongType
+                    defaultValue = UNKNOWN_ID
+                }
+            )
+        ) {
+            EditMealScreen()
+        }
+        composable(
+            route = Screen.MealDetailScreen.fullRoute,
+            arguments = listOf(
+                navArgument(Screen.MEAL_ID_ARG) {
+                    type = NavType.LongType
+                    defaultValue = UNKNOWN_ID
+                }
+            )
+        ) {
+            MealDetailScreen()
         }
     }
 }
