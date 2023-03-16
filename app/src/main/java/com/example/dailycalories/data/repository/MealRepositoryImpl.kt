@@ -72,12 +72,12 @@ class MealRepositoryImpl @Inject constructor(
         newGrams: Float,
         mealFoodProduct: MealFoodProduct,
     ) {
-        val kCalories = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.kCaloriesIn100Grams
+        val calories = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.caloriesIn100Grams
         val carbs = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.carbsIn100Grams
         val fat = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.fatIn100Grams
         val protein = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.proteinsIn100Grams
         val newMealFoodProduct = mealFoodProduct.copy(
-            kCals = kCalories,
+            cals = calories,
             carbs = carbs,
             fat = fat,
             proteins = protein

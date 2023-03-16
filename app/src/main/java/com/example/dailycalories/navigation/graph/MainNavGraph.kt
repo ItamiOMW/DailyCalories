@@ -6,13 +6,17 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.example.dailycalories.navigation.NavigationState
 import com.example.dailycalories.navigation.Screen
+import com.example.dailycalories.navigation.ext.navigateForResult
+import com.example.dailycalories.navigation.ext.popBackStackWithResult
 import com.example.dailycalories.presentation.screens.home.HomeScreen
 import com.example.dailycalories.presentation.screens.meal.add_meal.AddMealScreen
 import com.example.dailycalories.presentation.screens.meal.edit_meal.EditMealScreen
 import com.example.dailycalories.presentation.screens.meal.meal_detail.MealDetailScreen
 import com.example.dailycalories.presentation.screens.meal.meals.MealsScreen
+import com.example.dailycalories.presentation.screens.meal.search_product.SearchProductScreen
 import com.example.dailycalories.presentation.screens.profile.ProfileScreen
 import com.example.dailycalories.utils.UNKNOWN_ID
+import com.example.dailycalories.utils.getCurrentDateString
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.navigation
 
@@ -60,8 +64,8 @@ fun NavGraphBuilder.mealsScreenNavGraph(
             route = Screen.MealsScreen.fullRoute
         ) {
             MealsScreen(
-                onNavigateToAddMeal = {
-                    navState.navigateTo(route = Screen.AddMealScreen.fullRoute)
+                onNavigateToAddMeal = { date ->
+                    navState.navigateTo(route = Screen.AddMealScreen.getRouteWithArgs(date))
                 },
                 onNavigateToEditMeal = { id ->
                     navState.navigateTo(route = Screen.EditMealScreen.getRouteWithArgs(id))
@@ -73,9 +77,36 @@ fun NavGraphBuilder.mealsScreenNavGraph(
         }
         composable(
             route = Screen.AddMealScreen.fullRoute,
-
-            ) {
-            AddMealScreen()
+            arguments = listOf(
+                navArgument(Screen.DATE_ARG) {
+                    type = NavType.StringType
+                    defaultValue = getCurrentDateString()
+                }
+            )
+        ) {
+            AddMealScreen(
+                onNavigateBack = {
+                    navState.navigateBack()
+                },
+                onNavigateToSearchFood = { callback ->
+                    navState.navHostController.navigateForResult(
+                        Screen.SearchProductScreen.fullRoute,
+                        navResultCallback = callback
+                    )
+                }
+            )
+        }
+        composable(
+            route = Screen.SearchProductScreen.fullRoute,
+        ) {
+            SearchProductScreen(
+                onConfirm = { mealFoodProduct ->
+                    navState.navHostController.popBackStackWithResult(mealFoodProduct)
+                },
+                onNavigateBack = {
+                    navState.navigateBack()
+                }
+            )
         }
         composable(
             route = Screen.EditMealScreen.fullRoute,
