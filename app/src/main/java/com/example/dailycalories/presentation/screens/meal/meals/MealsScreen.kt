@@ -33,7 +33,7 @@ import com.example.dailycalories.utils.*
 @Composable
 fun MealsScreen(
     viewModel: MealsViewModel = hiltViewModel(),
-    onNavigateToAddMeal: () -> Unit,
+    onNavigateToAddMeal: (date: String) -> Unit,
     onNavigateToMealDetail: (id: Long) -> Unit,
     onNavigateToEditMeal: (id: Long) -> Unit,
 ) {
@@ -98,13 +98,13 @@ fun MealsScreen(
                 visible = !lazyListState.isScrollInProgress,
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
-                    .padding(bottom = 10.dp, end = 15.dp),
+                    .padding(bottom = 15.dp, end = 15.dp),
                 enter = fadeIn(),
                 exit = fadeOut()
             ) {
                 FloatingActionButton(
                     onClick = {
-                        onNavigateToAddMeal()
+                        onNavigateToAddMeal(state.date)
                     }
                 ) {
                     Icon(

@@ -60,6 +60,10 @@ class NavigationState(
         }
     }
 
+    fun navigateBack() {
+        navHostController.popBackStack()
+    }
+
 
 }
 

@@ -1,5 +1,6 @@
 package com.example.dailycalories.presentation.screens.meal.meals
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -27,7 +28,7 @@ class MealsViewModel @Inject constructor(
     private var getMealsJob: Job? = null
 
     init {
-//        getMeals(date = state.date)
+        getMeals(date = state.date)
         getDailyNutrition()
     }
 
@@ -35,6 +36,7 @@ class MealsViewModel @Inject constructor(
         when (event) {
             is MealsEvent.ChangeDate -> {
                 if (event.date == state.date) return
+                Log.d("test_bug", event.date)
                 getMeals(event.date)
             }
             is MealsEvent.ShowDatePickerDialog -> {
@@ -55,7 +57,7 @@ class MealsViewModel @Inject constructor(
     private fun getMeals(date: String) {
         getMealsJob?.cancel()
         getMealsJob = viewModelScope.launch {
-            mealRepository.getMeals().collect { meals ->
+            mealRepository.getMealsByDate(date).collect { meals ->
                 var carbs = 0f
                 var fat = 0f
                 var proteins = 0f
@@ -72,7 +74,7 @@ class MealsViewModel @Inject constructor(
                     }.toFloat()
                 }
                 val kCalsJob = async {
-                    kCals = meals.sumOf { it.products.sumOf { it.kCals.toDouble() } }.toFloat()
+                    kCals = meals.sumOf { it.products.sumOf { it.cals.toDouble() } }.toFloat()
                 }
                 awaitAll(carbsJob, fatJob, proteinsJob, kCalsJob)
                 state = state.copy(

@@ -1,6 +1,6 @@
 package com.example.dailycalories.data.repository
 
-import com.example.dailycalories.data.mapper.toFoodProductInfo
+import com.example.dailycalories.data.mapper.toListFoodProductInfo
 import com.example.dailycalories.data.remote.OpenFoodApiService
 import com.example.dailycalories.domain.model.food_product.FoodProductInfo
 import com.example.dailycalories.domain.repository.FoodProductRepository
@@ -22,9 +22,7 @@ class FoodProductRepositoryImpl @Inject constructor(
                 page,
                 pageSize
             )
-            val products = productsSearchResponse.products.map {
-                it.toFoodProductInfo()
-            }
+            val products = productsSearchResponse.products.toListFoodProductInfo()
             Response.success(products)
         } catch (e: Exception) {
             Response.failed(e.message.toString())

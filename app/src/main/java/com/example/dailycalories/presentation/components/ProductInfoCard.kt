@@ -4,12 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Alarm
-import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,30 +13,23 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.dailycalories.R
-import com.example.dailycalories.domain.model.meal.Meal
+import com.example.dailycalories.domain.model.food_product.FoodProductInfo
 import com.example.dailycalories.presentation.theme.ui.Green
 import com.example.dailycalories.presentation.theme.ui.Orange
 import com.example.dailycalories.presentation.theme.ui.Pink
 import com.example.dailycalories.presentation.theme.ui.Turquoise
-import com.example.dailycalories.utils.formatTimeToString
 
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MealCard(
-    meal: Meal,
+fun ProductInfoCard(
+    product: FoodProductInfo,
     modifier: Modifier = Modifier,
     shape: Shape = RoundedCornerShape(10.dp),
     background: Color = MaterialTheme.colors.surface,
     elevation: Dp = 1.dp,
-    onMealClicked: (Meal) -> Unit,
-    onDeleteMealClicked: (Meal) -> Unit,
-    onEditMealClicked: (Meal) -> Unit,
+    onProductClicked: (FoodProductInfo) -> Unit,
 ) {
-
-    val dropdownMenuExpanded = rememberSaveable {
-        mutableStateOf(false)
-    }
 
     Card(
         backgroundColor = background,
@@ -49,7 +37,7 @@ fun MealCard(
         shape = shape,
         elevation = elevation,
         onClick = {
-            onMealClicked(meal)
+            onProductClicked(product)
         }
     ) {
         Column(
@@ -59,65 +47,16 @@ fun MealCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(5.dp)
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Column() {
-                    Text(
-                        text = meal.name,
-                        style = MaterialTheme.typography.h6
-                    )
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            imageVector = Icons.Outlined.Alarm,
-                            contentDescription = stringResource(R.string.desc_icon_alarm)
-                        )
-                        Text(
-                            text = meal.timeSeconds.formatTimeToString(),
-                            style = MaterialTheme.typography.body2
-                        )
-                    }
-                }
-                Box(
-                    contentAlignment = Alignment.Center
-                ) {
-                    IconButton(
-                        onClick = {
-                            dropdownMenuExpanded.value = !dropdownMenuExpanded.value
-                        }
-                    ) {
-                        Icon(
-                            imageVector = Icons.Outlined.MoreVert,
-                            contentDescription = stringResource(R.string.desc_show_options),
-                        )
-                    }
-                    DropdownMenu(
-                        expanded = dropdownMenuExpanded.value,
-                        onDismissRequest = {
-                            dropdownMenuExpanded.value = false
-                        }
-                    ) {
-                        DropdownMenuItem(
-                            onClick = {
-                                onEditMealClicked(meal)
-                            }
-                        ) {
-                            Text(text = stringResource(R.string.title_edit))
-                        }
-                        DropdownMenuItem(
-                            onClick = {
-                                onDeleteMealClicked(meal)
-                            }
-                        ) {
-                            Text(text = stringResource(R.string.title_delete))
-                        }
-                    }
-
-                }
-
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = product.name,
+                    style = MaterialTheme.typography.h6
+                )
+                Spacer(modifier = Modifier.height(5.dp))
+                Text(
+                    text = stringResource(R.string.text_in_100_grams),
+                    style = MaterialTheme.typography.body1
+                )
             }
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -126,26 +65,26 @@ fun MealCard(
             ) {
                 NutritionCountItem(
                     name = stringResource(id = R.string.title_proteins),
-                    count = meal.proteins,
+                    count = product.proteinsIn100Grams,
                     modifier = Modifier
                         .background(Pink, RoundedCornerShape(15.dp))
                 )
                 NutritionCountItem(
                     name = stringResource(id = R.string.title_fats),
-                    count = meal.fat,
+                    count = product.fatIn100Grams,
                     modifier = Modifier
                         .background(Orange, RoundedCornerShape(15.dp))
                 )
                 NutritionCountItem(
                     name = stringResource(id = R.string.title_carbs),
-                    count = meal.carbs,
+                    count = product.carbsIn100Grams,
                     modifier = Modifier
                         .background(Green, RoundedCornerShape(15.dp))
                 )
             }
             NutritionCountItem(
                 name = stringResource(id = R.string.title_calories),
-                count = meal.calories,
+                count = product.caloriesIn100Grams,
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Turquoise, RoundedCornerShape(15.dp))

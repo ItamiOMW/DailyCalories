@@ -24,9 +24,15 @@ sealed class Screen(protected val route: String, vararg params: String) {
     object ProfileScreen : Screen(route = PROFILE_SCREEN_ROUTE)
 
 
-    object SearchFoodScreen : Screen(route = SEARCH_FOOD_SCREEN_ROUTE)
+    object SearchProductScreen : Screen(route = SEARCH_PRODUCT_SCREEN_ROUTE)
 
-    object AddMealScreen : Screen(route = ADD_MEAL_SCREEN_ROUTE)
+    object AddMealScreen : Screen(route = ADD_MEAL_SCREEN_ROUTE, DATE_ARG) {
+
+        fun getRouteWithArgs(date: String): String = route.appendParams(
+            DATE_ARG to date
+        )
+
+    }
 
 
     object EditMealScreen : Screen(route = EDIT_MEAL_SCREEN_ROUTE, MEAL_ID_ARG) {
@@ -55,13 +61,17 @@ sealed class Screen(protected val route: String, vararg params: String) {
         private const val MEALS_SCREEN_ROUTE = "meals"
         private const val TOOL_SCREEN_ROUTE = "tools"
         private const val PROFILE_SCREEN_ROUTE = "instruments"
-        private const val SEARCH_FOOD_SCREEN_ROUTE = "search_food"
+        private const val SEARCH_PRODUCT_SCREEN_ROUTE = "search_product"
         private const val EDIT_MEAL_SCREEN_ROUTE = "edit_meal"
         private const val ADD_MEAL_SCREEN_ROUTE = "edit_meal"
         private const val MEAL_DETAIL_SCREEN_ROUTE = "edit_meal"
 
         //Arguments
-        const val MEAL_ID_ARG = "meal_id"
+        const val MEAL_ID_ARG = "meal_id_arg"
+        const val DATE_ARG = "date_arg"
+
+        //Result Key
+        const val MEAL_FOOD_PRODUCT_RESULT_KEY = "meal_food_product_result"
 
     }
 

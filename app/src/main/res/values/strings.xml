@@ -9,10 +9,13 @@
     <string name="desc_navigate_to_previous">Navigate to previous screen</string>
     <string name="desc_get_prvs_date">Get previous day</string>
     <string name="desc_get_next_date">Get next day</string>
+    <string name="desc_icon_alarm">Icon alarm</string>
+    <string name="desc_add_meal_icon">Icon for adding a meal</string>
 
     <string name="count_kCals">%s kCals</string>
     <string name="count_calories">%.0f Calories</string>
     <string name="count_grams_short">%.0f g</string>
+    <string name="count_grams_short_2f">%.2f g</string>
     <string name="count_consumed_and_need_to_consume">%.0f / %.0f g</string>
     <string name="percent_progress">%s\%%</string>
     <string name="name_count_grams">%s: %.0f g</string>
@@ -22,6 +25,14 @@
 
     <string name="text_consumed">Consumed</string>
     <string name="text_you_can_change_cal_intake_in_profile">You always can change Calorie Intake in Profile Section</string>
+    <string name="text_in_100_grams">In 100 grams:</string>
+    <string name="text_cancel_new_meal">Are you sure you want to cancel the creation of a new meal?</string>
+
+    <string name="explanation_keep_weight">To keep weight, it\'s recommended to stick to the following values:</string>
+    <string name="explanation_lose_weight">To lose weight, it\'s recommended to stick to the following values:</string>
+    <string name="explanation_gain_weight">To gain weight, it\'s recommended to stick to the following values:</string>
+
+    <string name="warning_exit">Are you sure you want to exit?</string>
 
     <string name="title_yesterday">Yesterday</string>
     <string name="title_today">Today</string>
@@ -63,6 +74,14 @@
     <string name="title_thursday_short">T</string>
     <string name="title_friday_short">F</string>
     <string name="title_saturday_short">S</string>
+    <string name="title_delete">Delete</string>
+    <string name="title_edit">Edit</string>
+    <string name="title_edit_weight">Edit weight</string>
+    <string name="title_cancel">Cancel</string>
+    <string name="title_no">No</string>
+    <string name="title_yes">Yes</string>
+    <string name="title_cancel_creation">Cancel creation</string>
+    <string name="title_exit">Exit</string>
 
     <string name="error_specify_actual_age">Specify the actual age</string>
     <string name="error_specify_actual_weight">Specify the actual weight</string>
@@ -70,14 +89,18 @@
     <string name="error_choose_gender">Choose your gender</string>
     <string name="error_choose_goal">Choose your goal</string>
     <string name="error_choose_activity_level">Choose your activity level</string>
-
-    <string name="explanation_keep_weight">To keep weight, it\'s recommended to stick to the following values:</string>
-    <string name="explanation_lose_weight">To lose weight, it\'s recommended to stick to the following values:</string>
-    <string name="explanation_gain_weight">To gain weight, it\'s recommended to stick to the following values:</string>
-    <string name="desc_icon_alarm">Icon alarm</string>
-    <string name="desc_add_meal_icon">Icon for adding a meal</string>
-    <string name="title_delete">Delete</string>
-    <string name="title_edit">Edit</string>
+    <string name="title_search_products">Search Products</string>
+    <string name="hint_grams">grams</string>
+    <string name="text_select_product">Select product</string>
+    <string name="title_new_meal">New Meal</string>
+    <string name="text_find_food">Find food</string>
+    <string name="desc_find_product">Find product</string>
+    <string name="title_grams">Grams</string>
+    <string name="text_specify_weight_gr">Specify the weight in grams</string>
+    <string name="text_meal_name">Meal name</string>
+    <string name="desc_show_options">Show options</string>
+    <string name="error_name_is_empty">Name is empty</string>
+    <string name="error_add_food_meal">Add Food to your meal</string>
 
 
 </resources>
