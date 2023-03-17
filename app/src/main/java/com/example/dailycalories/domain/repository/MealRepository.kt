@@ -10,7 +10,9 @@ interface MealRepository {
 
     fun getMealsByDate(date: String): Flow<List<Meal>>
 
-    fun getMealById(id: Long): Flow<Meal>
+    suspend fun getMealById(id: Long): Meal
+
+    suspend fun getMealByIdFlow(id: Long): Flow<Meal>
 
     suspend fun addMeal(meal: Meal)
 

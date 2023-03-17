@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.dailycalories.R
+import com.example.dailycalories.utils.round
 
 
 @Composable
@@ -51,8 +52,8 @@ fun NutrientCard(
             Text(
                 text = stringResource(
                     R.string.count_consumed_and_need_to_consume,
-                    count,
-                    countInTotal
+                    count.round(1),
+                    countInTotal.round(1)
                 ),
                 style = MaterialTheme.typography.h5.copy(fontWeight = FontWeight.SemiBold),
                 textAlign = TextAlign.Center

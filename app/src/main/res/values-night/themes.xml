@@ -4,4 +4,9 @@
         <item name="android:statusBarColor">#06091d</item>
         <item name="android:navigationBarColor">#06091d</item>
     </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">#654ea3</item>
+    </style>
+
 </resources>

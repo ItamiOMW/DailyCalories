@@ -28,4 +28,9 @@ sealed class AddMealEvent {
 
     object HideEditProductWeightDialog : AddMealEvent()
 
+
+    data class ShowTimePickerDialog(
+        val show: Boolean,
+    ) : AddMealEvent()
+
 }

@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.dailycalories.R
+import com.example.dailycalories.utils.round
 
 
 @Composable
@@ -91,18 +92,18 @@ fun HorizontalNutrientsCard(
         ) {
             NutrientItem(
                 name = stringResource(R.string.title_protein),
-                count = proteins,
-                countInTotal = dailyProteins
+                count = proteins.round(1),
+                countInTotal = dailyProteins.round(1)
             )
             NutrientItem(
                 name = stringResource(R.string.title_carbs),
-                count = carbs,
-                countInTotal = dailyCarbs
+                count = carbs.round(1),
+                countInTotal = dailyCarbs.round(1)
             )
             NutrientItem(
                 name = stringResource(R.string.title_fat),
-                count = fat,
-                countInTotal = dailyFat
+                count = fat.round(1),
+                countInTotal = dailyFat.round(1)
             )
         }
     }
@@ -125,12 +126,12 @@ private fun NutrientItem(
             textAlign = TextAlign.Start
         )
         Text(
-            text = stringResource(R.string.count_grams_short, count),
+            text = stringResource(R.string.count_grams_short, count.round(1)),
             style = MaterialTheme.typography.h5.copy(fontWeight = FontWeight.SemiBold),
             textAlign = TextAlign.Center
         )
         Text(
-            text = stringResource(R.string.count_grams_short, countInTotal),
+            text = stringResource(R.string.count_grams_short, countInTotal.round(1)),
             style = MaterialTheme.typography.body1.copy(fontWeight = FontWeight.Medium),
             color = Color.Unspecified.copy(alpha = 0.5f),
             textAlign = TextAlign.Start

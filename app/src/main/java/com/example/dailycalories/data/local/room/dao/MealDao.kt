@@ -21,14 +21,18 @@ interface MealDao {
 
     @Transaction
     @Query("SELECT * FROM MealEntityTable WHERE id = :id LIMIT 1")
-    fun getMealWithMealFoodProductsById(id: Long): Flow<MealWithMealFoodProducts>
+    suspend fun getMealWithMealFoodProductsById(id: Long): MealWithMealFoodProducts
+
+    @Transaction
+    @Query("SELECT * FROM MealEntityTable WHERE id = :id LIMIT 1")
+    fun getMealWithMealFoodProductsByIdFlow(id: Long): Flow<MealWithMealFoodProducts>
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMeal(meal: MealEntity): Long
 
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateMeal(meal: MealEntity)
 
 
@@ -44,12 +48,15 @@ interface MealDao {
     suspend fun insertMealFoodProducts(mealFoodProducts: List<MealFoodProductEntity>)
 
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateMealFoodProduct(mealFoodProduct: MealFoodProductEntity)
 
 
     @Query("DELETE FROM MealFoodProductEntity WHERE id = :id")
     suspend fun deleteMealFoodProduct(id: Long)
+
+    @Query("DELETE FROM MealFoodProductEntity WHERE mealId = :mealId")
+    suspend fun deleteMealFoodProductsByMealId(mealId: Long)
 
 
     @Transaction

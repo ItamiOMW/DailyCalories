@@ -1,4 +1,4 @@
-package com.example.dailycalories.presentation.screens.meal.add_meal
+package com.example.dailycalories.presentation.screens.meal.edit_meal
 
 import android.app.Application
 import androidx.compose.runtime.getValue
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AddMealViewModel @Inject constructor(
+class EditMealViewModel @Inject constructor(
     private val mealRepository: MealRepository,
     private val foodProductRepository: FoodProductRepository,
     private val validateMeal: ValidateMeal,
@@ -28,65 +28,91 @@ class AddMealViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
-    var state by mutableStateOf(AddMealState())
+    var state by mutableStateOf(EditMealState())
         private set
 
 
-    private val _uiEvent = MutableSharedFlow<AddMealUiEvent>()
+    private val _uiEvent = MutableSharedFlow<EditMealUiEvent>()
     val uiEvent = _uiEvent.asSharedFlow()
 
-    private var date: String? = null
+
+    private var meal: Meal? = null
 
     init {
         viewModelScope.launch {
-            savedStateHandle.get<String>(Screen.DATE_ARG)?.let { d ->
-                date = d
-            } ?: throw Exception("Date wasn't passed")
+            savedStateHandle.get<Long>(Screen.MEAL_ID_ARG)?.let { id ->
+                getMeal(id)
+            } ?: throw Exception("MEAL ID wasn't passed")
         }
     }
 
 
-    fun onEvent(event: AddMealEvent) {
+    fun onEvent(event: EditMealEvent) {
         when (event) {
-            is AddMealEvent.AddMealProduct -> {
-                addMealProduct(event.mealProduct)
+            is EditMealEvent.AddMealProduct -> {
+                meal?.id?.let { id -> addMealProduct(event.mealProduct, id) }
             }
-            is AddMealEvent.DeleteMealProduct -> {
+            is EditMealEvent.DeleteMealProduct -> {
                 deleteMealProduct(event.product)
             }
-            is AddMealEvent.ChangeMealProductGrams -> {
-                changeMealProductGrams(event.mealProduct, event.weight)
+            is EditMealEvent.ChangeMealProductGrams -> {
+                state.productToEdit?.let { oldProduct ->
+                    changeMealProductGrams(
+                        oldProduct,
+                        event.editedMealProduct,
+                        event.weight
+                    )
+                }
             }
-            is AddMealEvent.ChangeTime -> {
+            is EditMealEvent.ChangeTime -> {
                 state = state.copy(timeSeconds = event.time)
             }
-            is AddMealEvent.SaveMeal -> {
-                saveMeal(
-                    name = state.name,
-                    date = date.toString(),
-                    timeSeconds = state.timeSeconds,
-                    products = state.mealProducts
-                )
+            is EditMealEvent.SaveMeal -> {
+                meal?.let { meal ->
+                    saveMeal(
+                        id = meal.id,
+                        name = state.name,
+                        date = meal.date,
+                        timeSeconds = state.timeSeconds,
+                        products = state.mealProducts
+                    )
+                }
             }
-            is AddMealEvent.ChangeMealName -> {
+            is EditMealEvent.ChangeMealName -> {
                 state = state.copy(name = event.name)
             }
-            is AddMealEvent.HideEditProductWeightDialog -> {
+            is EditMealEvent.HideEditProductWeightDialog -> {
                 state = state.copy(showEditProductWeightDialog = false)
             }
-            is AddMealEvent.ShowEditProductWeightDialog -> {
+            is EditMealEvent.ShowEditProductWeightDialog -> {
                 state = state.copy(
                     showEditProductWeightDialog = true,
                     productToEdit = event.product
                 )
             }
-            is AddMealEvent.ShowTimePickerDialog -> {
+            is EditMealEvent.ShowTimePickerDialog -> {
                 state = state.copy(showTimePickerDialog = event.show)
             }
         }
     }
 
+
+    private fun getMeal(id: Long) {
+        viewModelScope.launch {
+            val getMeal = mealRepository.getMealById(id)
+            meal = getMeal
+            state = state.copy(
+                mealProducts = getMeal.products,
+                timeSeconds = getMeal.timeSeconds,
+                name = getMeal.name,
+            )
+            return@launch
+        }
+    }
+
+
     private fun saveMeal(
+        id: Long,
         name: String,
         date: String,
         timeSeconds: Long,
@@ -98,6 +124,7 @@ class AddMealViewModel @Inject constructor(
             val fat = products.sumOf { it.fat.toDouble() }.toFloat()
             val proteins = products.sumOf { it.proteins.toDouble() }.toFloat()
             val meal = Meal(
+                id = id,
                 name = name.trim(),
                 date = date,
                 timeSeconds = timeSeconds,
@@ -109,13 +136,13 @@ class AddMealViewModel @Inject constructor(
             )
             val validateResult = validateMeal.invoke(meal)
             if (validateResult.successful) {
-                mealRepository.addMeal(meal)
-                _uiEvent.emit(AddMealUiEvent.MealSaved)
+                mealRepository.editMeal(meal)
+                _uiEvent.emit(EditMealUiEvent.MealSaved)
                 return@launch
             }
             if (validateResult.errorMessageResId != null) {
                 _uiEvent.emit(
-                    AddMealUiEvent.ShowSnackbar(
+                    EditMealUiEvent.ShowSnackbar(
                         application.getString(
                             validateResult.errorMessageResId
                         )
@@ -128,10 +155,10 @@ class AddMealViewModel @Inject constructor(
     }
 
 
-    private fun addMealProduct(mealProduct: MealFoodProduct) {
+    private fun addMealProduct(mealProduct: MealFoodProduct, mealId: Long) {
         viewModelScope.launch {
             val newList = state.mealProducts.toMutableList().apply {
-                add(mealProduct)
+                add(mealProduct.copy(mealId = mealId))
             }
             state = state.copy(mealProducts = newList)
         }
@@ -146,10 +173,14 @@ class AddMealViewModel @Inject constructor(
     }
 
 
-    private fun changeMealProductGrams(product: MealFoodProduct, grams: Float) {
+    private fun changeMealProductGrams(
+        oldProduct: MealFoodProduct,
+        newProduct: MealFoodProduct,
+        grams: Float,
+    ) {
         val newList = state.mealProducts.toMutableList()
-        val newItem = product.copy(grams = grams)
-        val index = newList.indexOf(product)
+        val newItem = newProduct.copy(grams = grams)
+        val index = newList.indexOf(oldProduct)
         newList.removeAt(index)
         newList.add(index, newItem)
         state = state.copy(mealProducts = newList)

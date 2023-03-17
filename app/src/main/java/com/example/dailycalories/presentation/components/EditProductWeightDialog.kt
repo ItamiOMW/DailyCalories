@@ -155,6 +155,8 @@ fun EditProductWeightDialog(
                                 onConfirm(
                                     weightText.value.toFloat(),
                                     MealFoodProduct(
+                                        id = product.id,
+                                        mealId = product.mealId,
                                         name = product.name,
                                         grams = weightText.value.toFloatOrNull() ?: 0f,
                                         cals = calories,

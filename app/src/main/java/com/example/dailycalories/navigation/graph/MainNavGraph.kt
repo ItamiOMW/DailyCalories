@@ -117,7 +117,17 @@ fun NavGraphBuilder.mealsScreenNavGraph(
                 }
             )
         ) {
-            EditMealScreen()
+            EditMealScreen(
+                onNavigateBack = {
+                    navState.navigateBack()
+                },
+                onNavigateToSearchFood = { callback ->
+                    navState.navHostController.navigateForResult(
+                        Screen.SearchProductScreen.fullRoute,
+                        navResultCallback = callback
+                    )
+                }
+            )
         }
         composable(
             route = Screen.MealDetailScreen.fullRoute,
@@ -128,7 +138,17 @@ fun NavGraphBuilder.mealsScreenNavGraph(
                 }
             )
         ) {
-            MealDetailScreen()
+            MealDetailScreen(
+                onNavigateBack = {
+                    navState.navigateBack()
+                },
+                onNavigateToSearchFood = { callback ->
+                    navState.navHostController.navigateForResult(
+                        Screen.SearchProductScreen.fullRoute,
+                        navResultCallback = callback
+                    )
+                }
+            )
         }
     }
 }
