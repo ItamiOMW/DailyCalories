@@ -11,6 +11,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import com.example.dailycalories.R
+import com.example.dailycalories.utils.round
 
 @Composable
 fun CountGramsAndTextItem(
@@ -24,7 +25,7 @@ fun CountGramsAndTextItem(
 
     Column(modifier = modifier) {
         Text(
-            text = stringResource(id = R.string.count_grams_short_2f, count),
+            text = stringResource(id = R.string.count_grams_short_2f, count.round(1)),
             style = MaterialTheme.typography.h6.copy(fontSize = countFontSize),
             color = color,
             textAlign = TextAlign.Center

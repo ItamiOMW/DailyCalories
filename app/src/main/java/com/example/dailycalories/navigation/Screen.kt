@@ -63,8 +63,8 @@ sealed class Screen(protected val route: String, vararg params: String) {
         private const val PROFILE_SCREEN_ROUTE = "instruments"
         private const val SEARCH_PRODUCT_SCREEN_ROUTE = "search_product"
         private const val EDIT_MEAL_SCREEN_ROUTE = "edit_meal"
-        private const val ADD_MEAL_SCREEN_ROUTE = "edit_meal"
-        private const val MEAL_DETAIL_SCREEN_ROUTE = "edit_meal"
+        private const val ADD_MEAL_SCREEN_ROUTE = "add_meal"
+        private const val MEAL_DETAIL_SCREEN_ROUTE = "meal_detail"
 
         //Arguments
         const val MEAL_ID_ARG = "meal_id_arg"

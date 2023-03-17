@@ -83,6 +83,10 @@ fun Long.formatTimeToString(): String {
     ).format(DateTimeFormatter.ofPattern(TIME_FORMAT))
 }
 
+fun formatTimeToLong(hour: Int, minute: Int): Long {
+    return LocalTime.of(hour, minute).toSecondOfDay().toLong()
+}
+
 
 internal fun Date.isSelected(date: Int, showingMonth: Int, showingYear: Int): Boolean {
     val c = Calendar.getInstance().apply { time = this@isSelected }

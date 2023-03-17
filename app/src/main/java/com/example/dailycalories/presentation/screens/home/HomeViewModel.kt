@@ -50,7 +50,7 @@ class HomeViewModel @Inject constructor(
     private fun getMeals(date: String) {
         getMealsJob?.cancel()
         getMealsJob = viewModelScope.launch {
-            mealRepository.getMeals().collect { meals ->
+            mealRepository.getMealsByDate(date).collect { meals ->
                 var carbs = 0f
                 var fat = 0f
                 var proteins = 0f

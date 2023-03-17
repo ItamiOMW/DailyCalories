@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.Alarm
 import androidx.compose.material.icons.outlined.KeyboardArrowLeft
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -29,10 +30,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.dailycalories.R
 import com.example.dailycalories.domain.model.meal.MealFoodProduct
 import com.example.dailycalories.navigation.ext.NavResultCallback
-import com.example.dailycalories.presentation.components.CountGramsAndTextItem
-import com.example.dailycalories.presentation.components.DialogExit
-import com.example.dailycalories.presentation.components.EditProductWeightDialog
-import com.example.dailycalories.presentation.components.MealProductCard
+import com.example.dailycalories.presentation.components.*
+import com.example.dailycalories.utils.formatTimeToString
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -106,6 +105,19 @@ fun AddMealScreen(
         }
     }
 
+
+    TimePickerDialog(
+        showDialog = state.showTimePickerDialog,
+        onCancelled = {
+            viewModel.onEvent(AddMealEvent.ShowTimePickerDialog(false))
+        },
+        onTimePicked = { timeSeconds ->
+            viewModel.onEvent(AddMealEvent.ShowTimePickerDialog(false))
+            viewModel.onEvent(AddMealEvent.ChangeTime(timeSeconds))
+        }
+    )
+
+
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
@@ -116,8 +128,8 @@ fun AddMealScreen(
                 onNameChanged = { name ->
                     viewModel.onEvent(AddMealEvent.ChangeMealName(name))
                 },
-                onTimeChanged = { time ->
-                    viewModel.onEvent(AddMealEvent.ChangeTime(time))
+                onClockClicked = {
+                    viewModel.onEvent(AddMealEvent.ShowTimePickerDialog(true))
                 },
                 onNavigateBack = {
                     showExitDialog.value = true
@@ -233,7 +245,7 @@ private fun HeaderSection(
     name: String,
     timeSeconds: Long,
     onNameChanged: (String) -> Unit,
-    onTimeChanged: (timeSeconds: Long) -> Unit,
+    onClockClicked: () -> Unit,
     onNavigateBack: () -> Unit,
 ) {
 
@@ -309,6 +321,27 @@ private fun HeaderSection(
 
             )
         Spacer(modifier = Modifier.height(15.dp))
+        IconButton(
+            onClick = {
+                onClockClicked()
+            }
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.Alarm,
+                    contentDescription = stringResource(R.string.desc_set_meal_time),
+                    tint = MaterialTheme.colors.onSecondary
+                )
+                Text(
+                    text = timeSeconds.formatTimeToString(),
+                    color = MaterialTheme.colors.onSecondary
+                )
+            }
+
+        }
+        Spacer(modifier = Modifier.height(10.dp))
         Row(
             modifier = Modifier
                 .fillMaxWidth()

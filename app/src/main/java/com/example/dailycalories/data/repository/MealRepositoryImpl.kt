@@ -36,8 +36,15 @@ class MealRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getMealById(id: Long): Flow<Meal> {
-        return mealDao.getMealWithMealFoodProductsById(id).map { mealWithProducts ->
+    override suspend fun getMealById(id: Long): Meal {
+        val mealWithProducts = mealDao.getMealWithMealFoodProductsById(id)
+        val entity = mealWithProducts.mealEntity
+        val products = mealWithProducts.mealFoodProducts
+        return entity.toMeal(products)
+    }
+
+    override suspend fun getMealByIdFlow(id: Long): Flow<Meal> {
+        return mealDao.getMealWithMealFoodProductsByIdFlow(id) .map { mealWithProducts ->
             val entity = mealWithProducts.mealEntity
             val products = mealWithProducts.mealFoodProducts
             entity.toMeal(products)
@@ -52,6 +59,9 @@ class MealRepositoryImpl @Inject constructor(
 
     override suspend fun editMeal(meal: Meal) {
         val mealEntity = meal.toMealEntity()
+        val productEntities = meal.products.map { it.toMealFoodProductEntity() }
+        mealDao.deleteMealFoodProductsByMealId(meal.id)
+        mealDao.insertMealFoodProducts(productEntities)
         mealDao.updateMeal(mealEntity)
     }
 
@@ -72,15 +82,16 @@ class MealRepositoryImpl @Inject constructor(
         newGrams: Float,
         mealFoodProduct: MealFoodProduct,
     ) {
-        val calories = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.caloriesIn100Grams
-        val carbs = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.carbsIn100Grams
-        val fat = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.fatIn100Grams
-        val protein = mealFoodProduct.grams / HUNDRED_GRAMS * mealFoodProduct.proteinsIn100Grams
+        val calories = newGrams / HUNDRED_GRAMS * mealFoodProduct.caloriesIn100Grams
+        val carbs = newGrams / HUNDRED_GRAMS * mealFoodProduct.carbsIn100Grams
+        val fat = newGrams / HUNDRED_GRAMS * mealFoodProduct.fatIn100Grams
+        val protein = newGrams / HUNDRED_GRAMS * mealFoodProduct.proteinsIn100Grams
         val newMealFoodProduct = mealFoodProduct.copy(
             cals = calories,
             carbs = carbs,
             fat = fat,
-            proteins = protein
+            proteins = protein,
+            grams = newGrams
         ).toMealFoodProductEntity()
         mealDao.updateMealFoodProduct(newMealFoodProduct)
     }

@@ -22,6 +22,7 @@ import com.example.dailycalories.presentation.theme.ui.Green
 import com.example.dailycalories.presentation.theme.ui.Orange
 import com.example.dailycalories.presentation.theme.ui.Pink
 import com.example.dailycalories.presentation.theme.ui.Turquoise
+import com.example.dailycalories.utils.round
 
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -33,8 +34,8 @@ fun MealProductCard(
     background: Color = MaterialTheme.colors.surface,
     elevation: Dp = 1.dp,
     onProductClicked: (MealFoodProduct) -> Unit,
-    onDeleteProductClicked: (MealFoodProduct) -> Unit,
-    onEditProductWeightClicked: (MealFoodProduct) -> Unit,
+    onDeleteProductClicked: ((MealFoodProduct) -> Unit)? = null,
+    onEditProductWeightClicked: ((MealFoodProduct) -> Unit)? = null,
 ) {
 
     val dropdownMenuExpanded = rememberSaveable {
@@ -61,7 +62,7 @@ fun MealProductCard(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-                Column() {
+                Column {
                     Text(
                         text = product.name,
                         style = MaterialTheme.typography.h6
@@ -91,21 +92,25 @@ fun MealProductCard(
                             dropdownMenuExpanded.value = false
                         }
                     ) {
-                        DropdownMenuItem(
-                            onClick = {
-                                dropdownMenuExpanded.value = false
-                                onEditProductWeightClicked(product)
+                        if (onEditProductWeightClicked != null) {
+                            DropdownMenuItem(
+                                onClick = {
+                                    dropdownMenuExpanded.value = false
+                                    onEditProductWeightClicked(product)
+                                }
+                            ) {
+                                Text(text = stringResource(R.string.title_edit_weight))
                             }
-                        ) {
-                            Text(text = stringResource(R.string.title_edit_weight))
                         }
-                        DropdownMenuItem(
-                            onClick = {
-                                dropdownMenuExpanded.value = false
-                                onDeleteProductClicked(product)
+                        if (onDeleteProductClicked != null) {
+                            DropdownMenuItem(
+                                onClick = {
+                                    dropdownMenuExpanded.value = false
+                                    onDeleteProductClicked(product)
+                                }
+                            ) {
+                                Text(text = stringResource(R.string.title_delete))
                             }
-                        ) {
-                            Text(text = stringResource(R.string.title_delete))
                         }
                     }
 
@@ -158,7 +163,7 @@ private fun NutritionCountItem(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = count.toString(),
+            text = count.round(1).toString(),
             modifier = Modifier.padding(start = 5.dp)
         )
         Spacer(modifier = Modifier.width(2.dp))

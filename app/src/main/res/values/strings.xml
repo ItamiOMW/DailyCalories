@@ -13,12 +13,12 @@
     <string name="desc_add_meal_icon">Icon for adding a meal</string>
 
     <string name="count_kCals">%s kCals</string>
-    <string name="count_calories">%.0f Calories</string>
-    <string name="count_grams_short">%.0f g</string>
-    <string name="count_grams_short_2f">%.2f g</string>
-    <string name="count_consumed_and_need_to_consume">%.0f / %.0f g</string>
+    <string name="count_calories">%s Calories</string>
+    <string name="count_grams_short">%s g</string>
+    <string name="count_grams_short_2f">%s g</string>
+    <string name="count_consumed_and_need_to_consume">%s / %s g</string>
     <string name="percent_progress">%s\%%</string>
-    <string name="name_count_grams">%s: %.0f g</string>
+    <string name="name_count_grams">%s: %s g</string>
     <string name="todays_date">TODAY, %s</string>
     <string name="yesterdays_date">YESTERDAY, %s</string>
     <string name="tomorrows_date">TOMORROW, %s</string>
@@ -101,6 +101,9 @@
     <string name="desc_show_options">Show options</string>
     <string name="error_name_is_empty">Name is empty</string>
     <string name="error_add_food_meal">Add Food to your meal</string>
+    <string name="desc_set_meal_time">Set time of meal</string>
+    <string name="title_edit_meal">Edit Meal</string>
+    <string name="title_meal">Meal</string>
 
 
 </resources>

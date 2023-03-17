@@ -24,6 +24,7 @@ import com.example.dailycalories.presentation.theme.ui.Orange
 import com.example.dailycalories.presentation.theme.ui.Pink
 import com.example.dailycalories.presentation.theme.ui.Turquoise
 import com.example.dailycalories.utils.formatTimeToString
+import com.example.dailycalories.utils.round
 
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -102,6 +103,7 @@ fun MealCard(
                     ) {
                         DropdownMenuItem(
                             onClick = {
+                                dropdownMenuExpanded.value = false
                                 onEditMealClicked(meal)
                             }
                         ) {
@@ -109,6 +111,7 @@ fun MealCard(
                         }
                         DropdownMenuItem(
                             onClick = {
+                                dropdownMenuExpanded.value = false
                                 onDeleteMealClicked(meal)
                             }
                         ) {
@@ -165,7 +168,7 @@ private fun NutritionCountItem(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = count.toString(),
+            text = count.round(1).toString(),
             modifier = Modifier.padding(start = 5.dp)
         )
         Spacer(modifier = Modifier.width(2.dp))

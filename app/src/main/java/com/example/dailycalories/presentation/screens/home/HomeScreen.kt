@@ -82,7 +82,7 @@ private fun HeaderSection(
     ) {
         Column() {
             Text(
-                text = stringResource(R.string.count_calories, calsConsumed),
+                text = stringResource(R.string.count_calories, calsConsumed.toInt()),
                 style = MaterialTheme.typography.h4.copy(fontWeight = FontWeight.SemiBold),
             )
             Text(
