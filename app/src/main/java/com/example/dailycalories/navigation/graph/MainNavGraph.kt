@@ -14,7 +14,9 @@ import com.example.dailycalories.presentation.screens.meal.edit_meal.EditMealScr
 import com.example.dailycalories.presentation.screens.meal.meal_detail.MealDetailScreen
 import com.example.dailycalories.presentation.screens.meal.meals.MealsScreen
 import com.example.dailycalories.presentation.screens.meal.search_product.SearchProductScreen
-import com.example.dailycalories.presentation.screens.profile.ProfileScreen
+import com.example.dailycalories.presentation.screens.profile.daily_calorie_intake.DailyCalorieIntakeScreen
+import com.example.dailycalories.presentation.screens.profile.profile.ProfileScreen
+import com.example.dailycalories.presentation.screens.profile.progress.ProgressScreen
 import com.example.dailycalories.utils.UNKNOWN_ID
 import com.example.dailycalories.utils.getCurrentDateString
 import com.google.accompanist.navigation.animation.composable
@@ -164,8 +166,35 @@ fun NavGraphBuilder.profileScreenNavGraph(
         composable(
             route = Screen.ProfileScreen.fullRoute
         ) {
-            ProfileScreen()
+            ProfileScreen(
+                onNavigateToOnboarding = {
+                    navState.navigateTo(Graph.ONBOARDING)
+                },
+                onNavigateToCalorieIntake = {
+                    navState.navigateTo(Screen.DailyCalorieIntakeScreen.fullRoute)
+                },
+                onNavigateToProgress = {
+                    navState.navigateTo(Screen.ProgressScreen.fullRoute)
+                }
+            )
         }
-
+        composable(
+            route = Screen.ProgressScreen.fullRoute
+        ) {
+            ProgressScreen(
+                onNavigateBack = {
+                    navState.navigateBack()
+                }
+            )
+        }
+        composable(
+            route = Screen.DailyCalorieIntakeScreen.fullRoute
+        ) {
+            DailyCalorieIntakeScreen(
+                onNavigateBack = {
+                    navState.navigateBack()
+                }
+            )
+        }
     }
 }

@@ -104,6 +104,10 @@
     <string name="desc_set_meal_time">Set time of meal</string>
     <string name="title_edit_meal">Edit Meal</string>
     <string name="title_meal">Meal</string>
+    <string name="title_progress">Progress</string>
+    <string name="title_daily_calorie_intake">Daily Calorie Intake</string>
+    <string name="title_change_goal">Change Goal</string>
+    <string name="title_profile">Profile</string>
 
 
 </resources>
