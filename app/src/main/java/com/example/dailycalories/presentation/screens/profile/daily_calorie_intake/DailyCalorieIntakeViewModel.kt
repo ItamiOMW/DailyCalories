@@ -1,4 +1,4 @@
-package com.example.dailycalories.presentation.screens.daily_calorie_intake
+package com.example.dailycalories.presentation.screens.profile.daily_calorie_intake
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -153,7 +153,6 @@ class DailyCalorieIntakeViewModel @Inject constructor(
                 }
                 awaitAll(carbsJob, proteinsJob, fatJob)
                 state = state.copy(
-                    isInitializing = false,
                     recommendedCarbs = carbs,
                     recommendedFat = fat,
                     recommendedCals = calories,
