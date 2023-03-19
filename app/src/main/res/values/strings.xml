@@ -125,6 +125,8 @@
     <string name="unit_text_fats">Fats</string>
     <string name="unit_text_calories">Calories</string>
     <string name="unit_text_proteins">Proteins</string>
+    <string name="desc_theme_icon">Theme icon</string>
+    <string name="title_dark_theme">Dark Theme</string>
 
 
 </resources>
