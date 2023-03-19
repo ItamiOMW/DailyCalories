@@ -2,7 +2,6 @@ package com.example.dailycalories.presentation.screens.profile.daily_calorie_int
 
 
 data class DailyCalorieIntakeState(
-    val isLoading: Boolean = false,
     val recommendedCals: Int = 0,
     val recommendedProteins: Float = 0.0f,
     val recommendedCarbs: Float = 0.0f,

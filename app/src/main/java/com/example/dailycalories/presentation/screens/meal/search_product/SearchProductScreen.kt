@@ -163,7 +163,7 @@ fun HeaderSection(
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Outlined.Search,
-                    contentDescription = stringResource(R.string.desc_find_product),
+                    contentDescription = stringResource(R.string.desc_clean_textfield),
                     tint = MaterialTheme.colors.onSecondary,
                 )
             },

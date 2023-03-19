@@ -2,12 +2,12 @@ package com.example.dailycalories.presentation.screens.profile.daily_calorie_int
 
 sealed class DailyCalorieIntakeEvent {
 
-    data class TextChangedProteins(val proteins: Float): DailyCalorieIntakeEvent()
+    data class ChangedProteins(val proteins: Float): DailyCalorieIntakeEvent()
 
-    data class TextChangedFat(val fat: Float): DailyCalorieIntakeEvent()
+    data class ChangedFats(val fat: Float): DailyCalorieIntakeEvent()
 
-    data class TextChangedCarbs(val carbs: Float): DailyCalorieIntakeEvent()
+    data class ChangedCarbs(val carbs: Float): DailyCalorieIntakeEvent()
 
-    object SaveNutrition: DailyCalorieIntakeEvent()
+    data class ChangedCalories(val calories: Int): DailyCalorieIntakeEvent()
 
 }

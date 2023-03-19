@@ -40,11 +40,13 @@ fun DialogExit(
             ) {
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.h6
+                    style = MaterialTheme.typography.h6,
+                    color = MaterialTheme.colors.onSurface
                 )
                 Text(
                     text = text,
-                    style = MaterialTheme.typography.body1
+                    style = MaterialTheme.typography.body1,
+                    color = MaterialTheme.colors.onSurface
                 )
                 Row(
                     modifier = Modifier.align(Alignment.End),

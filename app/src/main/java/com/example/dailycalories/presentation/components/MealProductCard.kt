@@ -65,11 +65,13 @@ fun MealProductCard(
                 Column {
                     Text(
                         text = product.name,
-                        style = MaterialTheme.typography.h6
+                        style = MaterialTheme.typography.h6,
+                        color = MaterialTheme.colors.onSurface
                     )
                     Text(
                         text = stringResource(id = R.string.count_grams_short, product.grams),
-                        style = MaterialTheme.typography.body2
+                        style = MaterialTheme.typography.body2,
+                        color = MaterialTheme.colors.onSurface
                     )
                 }
                 Box(
@@ -83,7 +85,8 @@ fun MealProductCard(
                         Icon(
                             imageVector = Icons.Outlined.MoreVert,
                             contentDescription = stringResource(R.string.desc_show_options),
-                            modifier = Modifier.align(Alignment.TopEnd)
+                            modifier = Modifier.align(Alignment.TopEnd),
+                            tint = MaterialTheme.colors.onSurface
                         )
                     }
                     DropdownMenu(
@@ -99,7 +102,10 @@ fun MealProductCard(
                                     onEditProductWeightClicked(product)
                                 }
                             ) {
-                                Text(text = stringResource(R.string.title_edit_weight))
+                                Text(
+                                    text = stringResource(R.string.title_edit_weight),
+                                    color = MaterialTheme.colors.onSurface
+                                )
                             }
                         }
                         if (onDeleteProductClicked != null) {
@@ -109,7 +115,10 @@ fun MealProductCard(
                                     onDeleteProductClicked(product)
                                 }
                             ) {
-                                Text(text = stringResource(R.string.title_delete))
+                                Text(
+                                    text = stringResource(R.string.title_delete),
+                                    color = MaterialTheme.colors.onSurface
+                                )
                             }
                         }
                     }

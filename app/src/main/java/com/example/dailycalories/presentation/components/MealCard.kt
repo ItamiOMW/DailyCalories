@@ -67,18 +67,21 @@ fun MealCard(
                 Column() {
                     Text(
                         text = meal.name,
-                        style = MaterialTheme.typography.h6
+                        style = MaterialTheme.typography.h6,
+                        color = MaterialTheme.colors.onSurface
                     )
                     Row(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(
                             imageVector = Icons.Outlined.Alarm,
-                            contentDescription = stringResource(R.string.desc_icon_alarm)
+                            contentDescription = stringResource(R.string.desc_icon_alarm),
+                            tint = MaterialTheme.colors.onSurface
                         )
                         Text(
                             text = meal.timeSeconds.formatTimeToString(),
-                            style = MaterialTheme.typography.body2
+                            style = MaterialTheme.typography.body2,
+                            color = MaterialTheme.colors.onSurface
                         )
                     }
                 }
@@ -93,6 +96,7 @@ fun MealCard(
                         Icon(
                             imageVector = Icons.Outlined.MoreVert,
                             contentDescription = stringResource(R.string.desc_show_options),
+                            tint = MaterialTheme.colors.onSurface
                         )
                     }
                     DropdownMenu(
@@ -107,7 +111,10 @@ fun MealCard(
                                 onEditMealClicked(meal)
                             }
                         ) {
-                            Text(text = stringResource(R.string.title_edit))
+                            Text(
+                                text = stringResource(R.string.title_edit),
+                                color = MaterialTheme.colors.onSurface
+                            )
                         }
                         DropdownMenuItem(
                             onClick = {
@@ -115,7 +122,10 @@ fun MealCard(
                                 onDeleteMealClicked(meal)
                             }
                         ) {
-                            Text(text = stringResource(R.string.title_delete))
+                            Text(
+                                text = stringResource(R.string.title_delete),
+                                color = MaterialTheme.colors.onSurface
+                            )
                         }
                     }
 

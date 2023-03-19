@@ -1,15 +1,17 @@
 package com.example.dailycalories.presentation.theme.ui
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
+@SuppressLint("ConflictingOnColor")
 private val DarkColorPalette = darkColors(
     primary = White,
     primaryVariant = Gray,
-    onPrimary = White,
+    onPrimary = DarkBlue,
     background = DarkBlue,
     onBackground = White,
     secondary = Purple,
@@ -22,7 +24,7 @@ private val DarkColorPalette = darkColors(
 private val LightColorPalette = lightColors(
     primary = DarkBlue,
     primaryVariant = GrayLight,
-    onPrimary = DarkBlue,
+    onPrimary = White,
     background = White,
     onBackground = DarkBlue,
     secondary = Purple,

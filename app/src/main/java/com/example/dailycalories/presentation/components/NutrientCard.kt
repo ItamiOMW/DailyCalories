@@ -47,7 +47,8 @@ fun NutrientCard(
             Text(
                 text = name,
                 style = MaterialTheme.typography.h6.copy(fontWeight = FontWeight.Medium),
-                textAlign = TextAlign.Start
+                textAlign = TextAlign.Start,
+                color = MaterialTheme.colors.onSurface,
             )
             Text(
                 text = stringResource(
@@ -56,7 +57,8 @@ fun NutrientCard(
                     countInTotal.round(1)
                 ),
                 style = MaterialTheme.typography.h5.copy(fontWeight = FontWeight.SemiBold),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colors.onSurface,
             )
             CircularProgressBar(
                 percentage = percentage,

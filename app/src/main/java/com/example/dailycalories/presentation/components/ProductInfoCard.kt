@@ -51,12 +51,14 @@ fun ProductInfoCard(
             Column(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     text = product.name,
-                    style = MaterialTheme.typography.h6
+                    style = MaterialTheme.typography.h6,
+                    color = MaterialTheme.colors.onSurface
                 )
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(
                     text = stringResource(R.string.text_in_100_grams),
-                    style = MaterialTheme.typography.body1
+                    style = MaterialTheme.typography.body1,
+                    color = MaterialTheme.colors.onSurface
                 )
             }
             Row(
