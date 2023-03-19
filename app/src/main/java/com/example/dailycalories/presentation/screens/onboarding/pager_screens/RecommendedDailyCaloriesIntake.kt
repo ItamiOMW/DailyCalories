@@ -58,7 +58,7 @@ fun RecommendedDailyCaloriesIntake(
         )
         Text(
             text = stringResource(R.string.text_you_can_change_cal_intake_in_profile),
-            color = MaterialTheme.colors.onPrimary,
+            color = MaterialTheme.colors.onSurface,
             style = MaterialTheme.typography.body2,
             modifier = Modifier.padding(10.dp)
         )
@@ -137,7 +137,8 @@ private fun NutritionItem(
         Text(
             text = stringResource(id = R.string.name_count_grams, name, value),
             style = MaterialTheme.typography.body2.copy(textAlign = TextAlign.Center),
-            modifier = Modifier.padding(10.dp)
+            modifier = Modifier.padding(10.dp),
+            color = MaterialTheme.colors.onSurface
         )
     }
 }

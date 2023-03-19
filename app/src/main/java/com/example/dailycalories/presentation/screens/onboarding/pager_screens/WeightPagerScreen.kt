@@ -28,7 +28,7 @@ fun WeightPagerScreen(
 
 
     val enteredWeight = rememberSaveable() {
-        mutableStateOf(weight)
+        mutableStateOf(weight.toString())
     }
 
     Column(
@@ -56,9 +56,9 @@ fun WeightPagerScreen(
             )
         }
         TextField(
-            value = enteredWeight.value.toString(),
+            value = enteredWeight.value,
             onValueChange = { newHeight ->
-                enteredWeight.value = newHeight.toFloatOrNull() ?: 0f
+                enteredWeight.value = newHeight
             },
             keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
         )
@@ -66,7 +66,12 @@ fun WeightPagerScreen(
             backgroundColor = MaterialTheme.colors.secondary,
             contentColor = White,
             onClick = {
-                onNextClicked(enteredWeight.value)
+                if (enteredWeight.value.isNotBlank()) {
+                    onNextClicked(enteredWeight.value.toFloat())
+                } else {
+                    onNextClicked(0.0f)
+                }
+
             },
             modifier = Modifier
                 .align(Alignment.End)

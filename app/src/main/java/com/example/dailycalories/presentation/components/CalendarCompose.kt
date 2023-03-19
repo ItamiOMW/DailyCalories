@@ -1,15 +1,11 @@
 package com.example.dailycalories.presentation.components
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
@@ -22,10 +18,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.dailycalories.utils.*
-import com.example.dailycalories.utils.getMonthDates
-import com.example.dailycalories.utils.getMonthName
-import com.example.dailycalories.utils.thisMonth
-import com.example.dailycalories.utils.todayDate
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -81,19 +73,18 @@ fun CalendarCompose(
             verticalAlignment = Alignment.CenterVertically
         ) {
             // previous month button
-            Surface(
-                shape = CircleShape,
-                onClick = {
-                    if (showingMonth == 1) {
-                        showingYear -= 1
-                        showingMonth = 12
-                    } else showingMonth -= 1
-                },
+            IconButton(onClick = {
+                if (showingMonth == 1) {
+                    showingYear -= 1
+                    showingMonth = 12
+                } else showingMonth -= 1
+            }
             ) {
-                Image(
+                Icon(
                     imageVector = Icons.Default.KeyboardArrowLeft,
                     contentDescription = "previous month",
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(24.dp),
+                    tint = MaterialTheme.colors.onSurface
                 )
             }
 
@@ -114,7 +105,7 @@ fun CalendarCompose(
                     },
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = currentMonthYearText)
+                Text(text = currentMonthYearText, color = MaterialTheme.colors.onSurface)
 
                 AnimatedVisibility(visible = showSelectedDateText) {
                     Text(
@@ -125,19 +116,18 @@ fun CalendarCompose(
                 }
             }
 
-            Surface(
-                shape = CircleShape,
-                onClick = {
-                    if (showingMonth == 12) {
-                        showingYear += 1
-                        showingMonth = 1
-                    } else showingMonth += 1
-                }
+            IconButton(onClick = {
+                if (showingMonth == 12) {
+                    showingYear += 1
+                    showingMonth = 1
+                } else showingMonth += 1
+            }
             ) {
-                Image(
+                Icon(
                     imageVector = Icons.Default.KeyboardArrowRight,
                     contentDescription = "next month",
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(24.dp),
+                    tint = MaterialTheme.colors.onSurface
                 )
             }
         }
@@ -153,7 +143,11 @@ fun CalendarCompose(
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
                 for (i in 1..7) {
-                    ItemDate(text = stringResource(id = getWeekDayTextResId(i)), onClick = {})
+                    ItemDate(
+                        text = stringResource(id = getWeekDayTextResId(i)),
+                        onClick = {},
+                        textColor = MaterialTheme.colors.onSurface
+                    )
                 }
             }
 
@@ -187,8 +181,8 @@ fun CalendarCompose(
                             ItemDate(
                                 text = if (d == 0) EMPTY_STRING else d.toString(),
                                 textColor = if (d == todayDate && showingMonth == thisMonth && showingYear == thisYear) {
-                                    MaterialTheme.colors.primary
-                                } else Color.Unspecified,
+                                    MaterialTheme.colors.secondary
+                                } else MaterialTheme.colors.onSurface,
                                 isSelected = selectedDate.isSelected(d, showingMonth, showingYear),
                                 onClick = {
                                     if (d != 0) onDateChange(showingYear, showingMonth, d)
@@ -220,7 +214,10 @@ private fun ItemDate(
         Box(
             contentAlignment = Alignment.Center,
         ) {
-            Text(text = text, color = if (isSelected) MaterialTheme.colors.onPrimary else textColor)
+            Text(
+                text = text,
+                color = if (isSelected) MaterialTheme.colors.onSecondary else textColor
+            )
         }
     }
 

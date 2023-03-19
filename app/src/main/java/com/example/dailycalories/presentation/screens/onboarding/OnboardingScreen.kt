@@ -26,7 +26,6 @@ import com.example.dailycalories.presentation.utils.TabItem
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -192,14 +191,14 @@ fun OnboardingScreen(
                 }
                 is OnboardingUiEvent.ShowSnackbar -> {
                     //Cant override default value of SnackbarDuration so use this method
-                    launch {
+                    val job = launch {
                         scaffoldState.snackbarHostState.showSnackbar(
                             uiEvent.message,
                             duration = SnackbarDuration.Indefinite
                         )
-                        delay(1000)
-                        cancel()
                     }
+                    delay(1000)
+                    job.cancel()
                 }
             }
         }

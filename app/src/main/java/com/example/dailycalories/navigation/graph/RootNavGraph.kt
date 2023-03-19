@@ -2,6 +2,7 @@ package com.example.dailycalories.navigation.graph
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import com.example.dailycalories.navigation.NavigationState
 import com.example.dailycalories.navigation.rememberNavigationState
 import com.google.accompanist.navigation.animation.AnimatedNavHost
@@ -10,11 +11,13 @@ import com.google.accompanist.navigation.animation.AnimatedNavHost
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun RootNavGraph(
-    navState: NavigationState = rememberNavigationState(),
+    modifier: Modifier = Modifier,
     startGraphRoute: String,
+    navState: NavigationState = rememberNavigationState(),
 ) {
 
     AnimatedNavHost(
+        modifier = modifier,
         navController = navState.navHostController,
         route = Graph.ROOT,
         startDestination = startGraphRoute,

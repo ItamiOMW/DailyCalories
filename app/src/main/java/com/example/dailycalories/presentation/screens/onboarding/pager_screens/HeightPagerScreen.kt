@@ -27,7 +27,7 @@ fun HeightPagerScreen(
 ) {
 
     val enteredHeight = rememberSaveable() {
-        mutableStateOf(height)
+        mutableStateOf(height.toString())
     }
 
     Column(
@@ -55,9 +55,9 @@ fun HeightPagerScreen(
             )
         }
         TextField(
-            value = enteredHeight.value.toString(),
+            value = enteredHeight.value,
             onValueChange = { newHeight ->
-                enteredHeight.value = newHeight.toIntOrNull() ?: 0
+                enteredHeight.value = newHeight
             },
             keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
         )
@@ -65,7 +65,12 @@ fun HeightPagerScreen(
             backgroundColor = MaterialTheme.colors.secondary,
             contentColor = White,
             onClick = {
-                onNextClicked(enteredHeight.value)
+                if (enteredHeight.value.isNotBlank()) {
+                    onNextClicked(enteredHeight.value.toInt())
+                } else {
+                    onNextClicked(0)
+                }
+
             },
             modifier = Modifier
                 .align(Alignment.End)
