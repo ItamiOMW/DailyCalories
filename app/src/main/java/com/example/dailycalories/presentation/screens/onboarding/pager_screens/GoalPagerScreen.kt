@@ -109,7 +109,8 @@ private fun GoalItem(
             style = MaterialTheme.typography.h4.copy(textAlign = TextAlign.Center),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 30.dp, end = 30.dp, top = 25.dp, bottom = 25.dp)
+                .padding(start = 30.dp, end = 30.dp, top = 25.dp, bottom = 25.dp),
+            color = MaterialTheme.colors.onSurface
         )
     }
 }

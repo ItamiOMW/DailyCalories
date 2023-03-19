@@ -27,6 +27,23 @@ class NavigationState(
     }
 
 
+//    fun navigateAndSetNewStartDestination(
+//        route: String,
+//        startDestinationRoute: String,
+//    ) {
+//        navHostController.navigate(
+//            route,
+//        ) {
+//            popUpTo(navHostController.graph.findStartDestination().id) {
+//                inclusive = true
+//            }
+//            restoreState = true
+//            launchSingleTop = true
+//        }
+//        navHostController.graph.setStartDestination(startDestinationRoute)
+//    }
+
+
     fun navigateAndSetNewStartDestination(
         route: String,
         startDestinationRoute: String,
@@ -37,15 +54,16 @@ class NavigationState(
             popUpTo(navHostController.graph.findStartDestination().id) {
                 inclusive = true
             }
-            restoreState = true
-            launchSingleTop = true
         }
-        navHostController.graph.setStartDestination(startDestinationRoute)
+        if (navHostController.graph.startDestinationRoute != startDestinationRoute) {
+            navHostController.graph.setStartDestination(startDestinationRoute)
+        }
     }
 
 
     fun navigateTo(
         route: String,
+        isInclusive: Boolean = false,
     ) {
         navHostController.navigate(
             route,
@@ -53,6 +71,7 @@ class NavigationState(
             navHostController.currentDestination?.id?.let { id ->
                 popUpTo(id) {
                     saveState = true
+                    inclusive = isInclusive
                 }
             }
             restoreState = true

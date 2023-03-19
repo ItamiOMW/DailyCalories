@@ -1,6 +1,5 @@
 package com.example.dailycalories.presentation.screens.main
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
@@ -65,11 +64,10 @@ fun MainScreen(
             is MainScreenState.Main -> Graph.MAIN
             is MainScreenState.Initial -> Graph.MAIN
         }
-        Box(modifier = Modifier.padding(it)) {
-            RootNavGraph(
-                navState = navState,
-                startGraphRoute = startGraphRoute,
-            )
-        }
+        RootNavGraph(
+            modifier = Modifier.padding(it),
+            navState = navState,
+            startGraphRoute = startGraphRoute,
+        )
     }
 }

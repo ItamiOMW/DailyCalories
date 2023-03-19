@@ -277,8 +277,11 @@ private fun EditNutritionSheetContent(
             color = MaterialTheme.colors.onSurface
         )
         Spacer(modifier = Modifier.height(30.dp))
-        Row {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
             TextField(
+                modifier = Modifier.weight(1f),
                 colors = TextFieldDefaults.textFieldColors(
                     textColor = MaterialTheme.colors.onSurface,
                     focusedIndicatorColor = Color.Transparent,
@@ -312,12 +315,13 @@ private fun EditNutritionSheetContent(
 
                 }
             )
-            Spacer(modifier = Modifier.width(5.dp))
             Text(
                 text = unitText,
-                textAlign = TextAlign.Center,
+                textAlign = TextAlign.Start,
                 color = MaterialTheme.colors.onSurface,
-                modifier = Modifier.align(Alignment.CenterVertically)
+                modifier = Modifier
+                    .align(Alignment.CenterVertically)
+                    .weight(1f)
             )
         }
         Spacer(modifier = Modifier.height(15.dp))
@@ -340,6 +344,7 @@ private fun EditNutritionSheetContent(
                 color = MaterialTheme.colors.onSurface
             )
         }
+        Spacer(modifier = Modifier.height(10.dp))
         Button(
             modifier = Modifier.align(Alignment.CenterHorizontally),
             onClick = {

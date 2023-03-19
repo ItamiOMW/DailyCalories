@@ -27,7 +27,7 @@ fun AgePagerScreen(
 ) {
 
     val enteredAge = rememberSaveable() {
-        mutableStateOf(age)
+        mutableStateOf(age.toString())
     }
 
     Column(
@@ -56,9 +56,9 @@ fun AgePagerScreen(
                 )
         }
         TextField(
-            value = enteredAge.value.toString(),
+            value = enteredAge.value,
             onValueChange = { newAge ->
-                enteredAge.value = newAge.toIntOrNull() ?: 0
+                enteredAge.value = newAge
             },
             keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
         )
@@ -66,7 +66,11 @@ fun AgePagerScreen(
             backgroundColor = MaterialTheme.colors.secondary,
             contentColor = White,
             onClick = {
-                onNextClicked(enteredAge.value)
+                if (enteredAge.value.isNotBlank()) {
+                    onNextClicked(enteredAge.value.toInt())
+                } else {
+                    onNextClicked(0)
+                }
             },
             modifier = Modifier
                 .align(Alignment.End)
