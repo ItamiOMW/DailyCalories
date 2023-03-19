@@ -318,8 +318,7 @@ private fun HeaderSection(
                     color = MaterialTheme.colors.onSecondary.copy(alpha = 0.5f)
                 )
             },
-
-            )
+        )
         Spacer(modifier = Modifier.height(15.dp))
         IconButton(
             onClick = {

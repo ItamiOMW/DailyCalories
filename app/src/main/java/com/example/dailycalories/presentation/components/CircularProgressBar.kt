@@ -73,7 +73,8 @@ fun CircularProgressBar(
             )
         }
         Text(
-            text = stringResource(R.string.percent_progress, (percentage * 100).toInt())
+            text = stringResource(R.string.percent_progress, (percentage * 100).toInt()),
+            color = secondColor
         )
     }
 }

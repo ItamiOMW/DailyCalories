@@ -22,6 +22,7 @@
     <string name="todays_date">TODAY, %s</string>
     <string name="yesterdays_date">YESTERDAY, %s</string>
     <string name="tomorrows_date">TOMORROW, %s</string>
+    <string name="count_and_unit">%s %s</string>
 
     <string name="text_consumed">Consumed</string>
     <string name="text_you_can_change_cal_intake_in_profile">You always can change Calorie Intake in Profile Section</string>
@@ -108,6 +109,22 @@
     <string name="title_daily_calorie_intake">Daily Calorie Intake</string>
     <string name="title_change_goal">Change Goal</string>
     <string name="title_profile">Profile</string>
+    <string name="title_daily_intake">Daily intake</string>
+    <string name="desc_close_nutr_dialog">Close the nutrition change dialog</string>
+    <string name="desc_clean_textfield">Clean the text field</string>
+    <string name="text_recommended_intake_count_unit">Recommended daily intake: %s %s</string>
+    <string name="text_daily_calorie_intake">Daily calorie intake</string>
+    <string name="text_kcal">kcal</string>
+    <string name="text_carbs">carbs</string>
+    <string name="text_proteins">proteins</string>
+    <string name="text_fats">fats</string>
+    <string name="text_daily_proteins_intake">Daily proteins intake</string>
+    <string name="text_daily_fat_intake">Daily fats intake</string>
+    <string name="text_daily_carbs_intake">Daily carbs intake</string>
+    <string name="unit_text_carbs">Carbs</string>
+    <string name="unit_text_fats">Fats</string>
+    <string name="unit_text_calories">Calories</string>
+    <string name="unit_text_proteins">Proteins</string>
 
 
 </resources>

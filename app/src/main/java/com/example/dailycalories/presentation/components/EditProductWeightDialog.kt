@@ -81,11 +81,13 @@ fun EditProductWeightDialog(
                 ) {
                     Text(
                         text = product.name,
-                        style = MaterialTheme.typography.h6
+                        style = MaterialTheme.typography.h6,
+                        color = MaterialTheme.colors.onSurface
                     )
                     Text(
                         text = stringResource(id = R.string.count_calories, calories),
-                        style = MaterialTheme.typography.h4
+                        style = MaterialTheme.typography.h4,
+                        color = MaterialTheme.colors.onSurface
                     )
                 }
                 Spacer(modifier = Modifier.height(15.dp))
@@ -132,7 +134,8 @@ fun EditProductWeightDialog(
                         modifier = Modifier
                             .weight(1f)
                             .align(Alignment.CenterVertically)
-                            .padding(start = 10.dp)
+                            .padding(start = 10.dp),
+                        color = MaterialTheme.colors.onSurface
                     )
                 }
                 Spacer(modifier = Modifier.height(10.dp))
