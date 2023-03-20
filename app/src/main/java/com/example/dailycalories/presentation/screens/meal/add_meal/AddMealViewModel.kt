@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dailycalories.domain.model.meal.Meal
 import com.example.dailycalories.domain.model.meal.MealFoodProduct
-import com.example.dailycalories.domain.repository.FoodProductRepository
 import com.example.dailycalories.domain.repository.MealRepository
 import com.example.dailycalories.domain.usecase.meal_validation.ValidateMeal
 import com.example.dailycalories.navigation.Screen
@@ -22,7 +21,6 @@ import javax.inject.Inject
 @HiltViewModel
 class AddMealViewModel @Inject constructor(
     private val mealRepository: MealRepository,
-    private val foodProductRepository: FoodProductRepository,
     private val validateMeal: ValidateMeal,
     private val application: Application,
     savedStateHandle: SavedStateHandle,
@@ -34,6 +32,7 @@ class AddMealViewModel @Inject constructor(
 
     private val _uiEvent = MutableSharedFlow<AddMealUiEvent>()
     val uiEvent = _uiEvent.asSharedFlow()
+
 
     private var date: String? = null
 

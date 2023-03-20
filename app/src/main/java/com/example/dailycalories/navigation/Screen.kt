@@ -27,7 +27,7 @@ sealed class Screen(protected val route: String, vararg params: String) {
     object DailyCalorieIntakeScreen : Screen(route = DAILY_CALORIE_INTAKE_SCREEN_ROUTE)
 
 
-    object ProgressScreen: Screen(route = PROGRESS_SCREEN_ROUTE)
+    object CalorieCalculatorScreen: Screen(route = CALORIE_CALCULATOR_SCREEN_ROUTE)
 
 
     object AddMealScreen : Screen(route = ADD_MEAL_SCREEN_ROUTE, DATE_ARG) {
@@ -60,7 +60,7 @@ sealed class Screen(protected val route: String, vararg params: String) {
 
         //Screen routes
         private const val ONBOARDING_SCREEN_ROUTE = "onboarding"
-        private const val DAILY_CALORIE_INTAKE_SCREEN_ROUTE = "set_nutrition"
+        private const val DAILY_CALORIE_INTAKE_SCREEN_ROUTE = "daily_calorie_intake"
         private const val HOME_SCREEN_ROUTE = "home"
         private const val MEALS_SCREEN_ROUTE = "meals"
         private const val PROFILE_SCREEN_ROUTE = "profile"
@@ -68,7 +68,7 @@ sealed class Screen(protected val route: String, vararg params: String) {
         private const val EDIT_MEAL_SCREEN_ROUTE = "edit_meal"
         private const val ADD_MEAL_SCREEN_ROUTE = "add_meal"
         private const val MEAL_DETAIL_SCREEN_ROUTE = "meal_detail"
-        private const val PROGRESS_SCREEN_ROUTE = "progress"
+        private const val CALORIE_CALCULATOR_SCREEN_ROUTE = "calorie_calculator"
 
         //Arguments
         const val MEAL_ID_ARG = "meal_id_arg"

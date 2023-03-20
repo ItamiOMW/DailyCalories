@@ -16,7 +16,7 @@ import com.example.dailycalories.presentation.screens.meal.meals.MealsScreen
 import com.example.dailycalories.presentation.screens.meal.search_product.SearchProductScreen
 import com.example.dailycalories.presentation.screens.profile.daily_calorie_intake.DailyCalorieIntakeScreen
 import com.example.dailycalories.presentation.screens.profile.profile.ProfileScreen
-import com.example.dailycalories.presentation.screens.profile.progress.ProgressScreen
+import com.example.dailycalories.presentation.screens.profile.calorie_calculator.CalorieCalculatorScreen
 import com.example.dailycalories.utils.UNKNOWN_ID
 import com.example.dailycalories.utils.getCurrentDateString
 import com.google.accompanist.navigation.animation.composable
@@ -173,15 +173,15 @@ fun NavGraphBuilder.profileScreenNavGraph(
                 onNavigateToCalorieIntake = {
                     navState.navigateTo(Screen.DailyCalorieIntakeScreen.fullRoute)
                 },
-                onNavigateToProgress = {
-                    navState.navigateTo(Screen.ProgressScreen.fullRoute)
+                onNavigateToCalorieCalculator = {
+                    navState.navigateTo(Screen.CalorieCalculatorScreen.fullRoute)
                 }
             )
         }
         composable(
-            route = Screen.ProgressScreen.fullRoute
+            route = Screen.CalorieCalculatorScreen.fullRoute
         ) {
-            ProgressScreen(
+            CalorieCalculatorScreen(
                 onNavigateBack = {
                     navState.navigateBack()
                 }

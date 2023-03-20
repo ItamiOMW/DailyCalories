@@ -17,15 +17,18 @@ interface CalorieCounterRepository {
     ): Int
 
     suspend fun calculateCarbs(
-        dailyCalories: Int
+        dailyCalories: Int,
+        carbsRatio: Float = 0.4f
     ): Float
 
     suspend fun calculateProteins(
-        dailyCalories: Int
+        dailyCalories: Int,
+        proteinsRatio: Float = 0.3f
     ): Float
 
     suspend fun calculateFat(
-        dailyCalories: Int
+        dailyCalories: Int,
+        fatRatio: Float = 0.3f
     ): Float
 
 

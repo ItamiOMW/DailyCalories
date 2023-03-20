@@ -52,22 +52,16 @@ class CalorieCounterRepositoryImpl @Inject constructor(
         return (amr + caloriesAdjustment).toInt()
     }
 
-    override suspend fun calculateCarbs(
-        dailyCalories: Int,
-    ): Float {
-        return dailyCalories * 0.4f / 4
+    override suspend fun calculateCarbs(dailyCalories: Int, carbsRatio: Float): Float {
+        return dailyCalories * carbsRatio / 4
     }
 
-    override suspend fun calculateProteins(
-        dailyCalories: Int,
-    ): Float {
-        return dailyCalories * 0.3f / 4
+    override suspend fun calculateProteins(dailyCalories: Int, proteinsRatio: Float): Float {
+        return dailyCalories * proteinsRatio / 4
     }
 
-    override suspend fun calculateFat(
-        dailyCalories: Int,
-    ): Float {
-        return dailyCalories * 0.3f / 9
+    override suspend fun calculateFat(dailyCalories: Int, fatRatio: Float): Float {
+        return dailyCalories * fatRatio / 9
     }
 
     override suspend fun getCaloriesByNutrition(proteins: Float, fat: Float, carbs: Float): Int {

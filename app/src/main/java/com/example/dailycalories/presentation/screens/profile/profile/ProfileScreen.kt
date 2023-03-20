@@ -23,7 +23,7 @@ import com.example.dailycalories.R
 @Composable
 fun ProfileScreen(
     onNavigateToOnboarding: () -> Unit,
-    onNavigateToProgress: () -> Unit,
+    onNavigateToCalorieCalculator: () -> Unit,
     onNavigateToCalorieIntake: () -> Unit,
     viewModel: ProfileViewModel = hiltViewModel(),
 ) {
@@ -60,12 +60,12 @@ fun ProfileScreen(
 
         Spacer(modifier = Modifier.height(50.dp))
         UnderlinedTextItem(
-            text = stringResource(R.string.title_progress),
+            text = stringResource(R.string.title_calorie_calculator),
             icon = Icons.Outlined.KeyboardArrowRight,
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
-                    onNavigateToProgress()
+                    onNavigateToCalorieCalculator()
                 }
                 .padding(start = 10.dp, end = 10.dp)
                 .background(MaterialTheme.colors.background),
