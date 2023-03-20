@@ -127,6 +127,21 @@
     <string name="unit_text_proteins">Proteins</string>
     <string name="desc_theme_icon">Theme icon</string>
     <string name="title_dark_theme">Dark Theme</string>
+    <string name="title_calorie_calculator">Calorie Calculator</string>
+    <string name="error_pfc_ration">The ration of PFC should be 100 in total</string>
+    <string name="error_weight">Weight should be more than 0</string>
+    <string name="error_height">Height should be more than 0</string>
+    <string name="error_age">Age should more than 0</string>
+    <string name="text_age_in_years">Age, years</string>
+    <string name="text_height_in_cm">Height, cm</string>
+    <string name="text_weight_in_kg">Weight, kg</string>
+    <string name="text_proteins_in_percentage">Proteins, %</string>
+    <string name="text_fats_in_percentage">Fats, %</string>
+    <string name="text_carbs_in_percentage">Carbs, %</string>
+    <string name="title_calculate">Calculate</string>
+    <string name="text_your_daily_calorie_intake">Your daily calorie intake</string>
+    <string name="text_save_nutrition">Save Nutrition</string>
+    <string name="text_nutrition_saved">Nutrition Saved</string>
 
 
 </resources>

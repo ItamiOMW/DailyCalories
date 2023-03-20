@@ -23,7 +23,7 @@ import com.example.dailycalories.utils.round
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ProductInfoCard(
+fun FoodProductInfoCard(
     product: FoodProductInfo,
     modifier: Modifier = Modifier,
     shape: Shape = RoundedCornerShape(10.dp),

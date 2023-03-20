@@ -32,6 +32,7 @@ import com.example.dailycalories.domain.model.meal.MealFoodProduct
 import com.example.dailycalories.navigation.ext.NavResultCallback
 import com.example.dailycalories.presentation.components.*
 import com.example.dailycalories.utils.formatTimeToString
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -61,14 +62,16 @@ fun EditMealScreen(
                 }
                 is EditMealUiEvent.ShowSnackbar -> {
                     //Cant override default value of SnackbarDuration so use this method
-                    val job = launch {
-                        scaffoldState.snackbarHostState.showSnackbar(
-                            uiEvent.message,
-                            duration = SnackbarDuration.Indefinite
-                        )
+                    launch {
+                        val job = launch {
+                            scaffoldState.snackbarHostState.showSnackbar(
+                                uiEvent.message,
+                                duration = SnackbarDuration.Indefinite
+                            )
+                        }
+                        delay(1000)
+                        cancel()
                     }
-                    delay(500)
-                    job.cancel()
                 }
             }
         }

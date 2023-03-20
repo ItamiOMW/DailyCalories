@@ -22,7 +22,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.dailycalories.R
 import com.example.dailycalories.domain.model.meal.MealFoodProduct
 import com.example.dailycalories.presentation.components.AddProductDialog
-import com.example.dailycalories.presentation.components.ProductInfoCard
+import com.example.dailycalories.presentation.components.FoodProductInfoCard
 import com.example.dailycalories.utils.EMPTY_STRING
 
 
@@ -78,7 +78,7 @@ fun SearchProductScreen(
                 verticalArrangement = Arrangement.spacedBy(15.dp),
             ) {
                 items(state.products) { product ->
-                    ProductInfoCard(
+                    FoodProductInfoCard(
                         modifier = Modifier
                             .animateItemPlacement(tween(300)),
                         product = product,
