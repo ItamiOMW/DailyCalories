@@ -12,7 +12,6 @@
     <string name="desc_icon_alarm">Icon alarm</string>
     <string name="desc_add_meal_icon">Icon for adding a meal</string>
 
-    <string name="count_kCals">%s kCals</string>
     <string name="count_calories">%s Calories</string>
     <string name="count_grams_short">%s g</string>
     <string name="count_grams_short_2f">%s g</string>
