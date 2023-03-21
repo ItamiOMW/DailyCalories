@@ -19,9 +19,7 @@ buildscript {
         retrofit_version = '2.9.0'
         okhttp_version = '5.0.0-alpha.3'
         accompanist_animation_version = '0.27.0'
-        accompanist_permissions_version = '0.28.0'
         accompanist_systemui_controller_version = '0.27.0'
-        coil_compose_version = '2.2.2'
         viewpager_version = '0.24.1-alpha'
         datastore_version = '1.0.0'
     }

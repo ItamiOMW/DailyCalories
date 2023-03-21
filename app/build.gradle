@@ -93,18 +93,12 @@ dependencies {
     //Navigation animations
     implementation "com.google.accompanist:accompanist-navigation-animation:$accompanist_animation_version"
 
-    //Request permissions
-    implementation "com.google.accompanist:accompanist-permissions:$accompanist_permissions_version"
-
     //Control system ui
     implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_systemui_controller_version"
 
     //Retrofit
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
-
-    //Coil
-    implementation("io.coil-kt:coil-compose:$coil_compose_version")
 
     //ViewPager
     implementation "com.google.accompanist:accompanist-pager:$viewpager_version"
