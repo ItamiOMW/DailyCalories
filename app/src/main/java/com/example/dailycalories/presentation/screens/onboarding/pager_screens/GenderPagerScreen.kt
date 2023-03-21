@@ -52,8 +52,7 @@ fun GenderPagerScreen(
                 text = stringResource(id = R.string.title_gender),
                 style = MaterialTheme.typography.h4.copy(textAlign = TextAlign.Center),
                 modifier = Modifier.align(Alignment.TopCenter),
-
-                )
+            )
         }
         GendersSection(
             selectedGenderType = selectedGenderType.value,

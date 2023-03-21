@@ -60,7 +60,7 @@
     <string name="title_weight_kg">Вес(кг)</string>
     <string name="title_height">Рост</string>
     <string name="title_weight">Вес</string>
-    <string name="title_activity_level">Уровень Активности</string>
+    <string name="title_activity_level">Активность</string>
     <string name="title_activity_low">Низкий</string>
     <string name="title_activity_medium">Средний</string>
     <string name="title_activity_high">Высокий</string>
