@@ -3,6 +3,7 @@
     <style name="Theme.DailyCalories" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">#06091d</item>
         <item name="android:navigationBarColor">#06091d</item>
+        <item name="backgroundColor">#06091d</item>
     </style>
 
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">

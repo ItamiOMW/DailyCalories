@@ -32,7 +32,7 @@ fun TimePickerDialog(
     val timePickerDialog = TimePickerDialog(
         context,
         R.style.DialogTheme,
-        { tp, hour: Int, minute: Int ->
+        { _, hour: Int, minute: Int ->
             onTimePicked(formatTimeToLong(hour, minute))
         },
         hour, minute, true

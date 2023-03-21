@@ -106,7 +106,7 @@ class CalorieCalculatorViewModel @Inject constructor(
                 userRepository.saveDailyProteins(proteins)
             }
             val saveFatJob = async {
-                userRepository.saveDailyProteins(fat)
+                userRepository.saveDailyFat(fat)
             }
             val saveCarbsJob = async {
                 userRepository.saveDailyCarbs(carbs)
