@@ -248,7 +248,7 @@ private fun HeaderSection(
                 modifier = Modifier.weight(1f)
             )
             StatisticItem(
-                name = stringResource(id = R.string.title_fat),
+                name = stringResource(id = R.string.title_fats),
                 count = fat,
                 totalCount = dailyFat,
                 modifier = Modifier.weight(1f)
