@@ -1,6 +1,7 @@
 package com.example.dailycalories.navigation.graph
 
-import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.*
+import androidx.compose.animation.core.tween
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
@@ -84,7 +85,23 @@ fun NavGraphBuilder.mealsScreenNavGraph(
                     type = NavType.StringType
                     defaultValue = getCurrentDateString()
                 }
-            )
+            ),
+            enterTransition = {
+                slideInVertically(initialOffsetY = { it }, animationSpec = tween(500))
+                    .plus(fadeIn(tween(500)))
+            },
+            exitTransition = {
+                slideOutVertically(targetOffsetY = { -it }, animationSpec = tween(500))
+                    .plus(fadeOut(tween(500)))
+            },
+            popEnterTransition = {
+                slideInVertically(initialOffsetY = { -it }, animationSpec = tween(500))
+                    .plus(fadeIn(tween(500)))
+            },
+            popExitTransition = {
+                slideOutVertically(targetOffsetY = { it }, animationSpec = tween(500))
+                    .plus(fadeOut(tween(500)))
+            }
         ) {
             AddMealScreen(
                 onNavigateBack = {
@@ -100,6 +117,26 @@ fun NavGraphBuilder.mealsScreenNavGraph(
         }
         composable(
             route = Screen.SearchProductScreen.fullRoute,
+            enterTransition = {
+                slideInHorizontally(
+                    initialOffsetX = { it }, animationSpec = tween(500)
+                ).plus(fadeIn(tween(500)))
+            },
+            exitTransition = {
+                slideOutHorizontally(
+                    targetOffsetX = { -it }, animationSpec = tween(500)
+                ).plus(fadeOut(tween(500)))
+            },
+            popEnterTransition = {
+                slideInHorizontally(
+                    initialOffsetX = { -it }, animationSpec = tween(500)
+                ).plus(fadeIn(tween(500)))
+            },
+            popExitTransition = {
+                slideOutHorizontally(
+                    targetOffsetX = { it }, animationSpec = tween(500)
+                ).plus(fadeOut(tween(500)))
+            }
         ) {
             SearchProductScreen(
                 onConfirm = { mealFoodProduct ->
@@ -117,7 +154,27 @@ fun NavGraphBuilder.mealsScreenNavGraph(
                     type = NavType.LongType
                     defaultValue = UNKNOWN_ID
                 }
-            )
+            ),
+            enterTransition = {
+                slideInHorizontally(
+                    initialOffsetX = { it }, animationSpec = tween(500)
+                ).plus(fadeIn(tween(500)))
+            },
+            exitTransition = {
+                slideOutHorizontally(
+                    targetOffsetX = { -it }, animationSpec = tween(500)
+                ).plus(fadeOut(tween(500)))
+            },
+            popEnterTransition = {
+                slideInHorizontally(
+                    initialOffsetX = { -it }, animationSpec = tween(500)
+                ).plus(fadeIn(tween(500)))
+            },
+            popExitTransition = {
+                slideOutHorizontally(
+                    targetOffsetX = { it }, animationSpec = tween(500)
+                ).plus(fadeOut(tween(500)))
+            }
         ) {
             EditMealScreen(
                 onNavigateBack = {
@@ -138,7 +195,27 @@ fun NavGraphBuilder.mealsScreenNavGraph(
                     type = NavType.LongType
                     defaultValue = UNKNOWN_ID
                 }
-            )
+            ),
+            enterTransition = {
+                slideInHorizontally(
+                    initialOffsetX = { it }, animationSpec = tween(500)
+                ).plus(fadeIn(tween(500)))
+            },
+            exitTransition = {
+                slideOutHorizontally(
+                    targetOffsetX = { -it }, animationSpec = tween(500)
+                ).plus(fadeOut(tween(500)))
+            },
+            popEnterTransition = {
+                slideInHorizontally(
+                    initialOffsetX = { -it }, animationSpec = tween(500)
+                ).plus(fadeIn(tween(500)))
+            },
+            popExitTransition = {
+                slideOutHorizontally(
+                    targetOffsetX = { it }, animationSpec = tween(500)
+                ).plus(fadeOut(tween(500)))
+            }
         ) {
             MealDetailScreen(
                 onNavigateBack = {
@@ -179,7 +256,27 @@ fun NavGraphBuilder.profileScreenNavGraph(
             )
         }
         composable(
-            route = Screen.CalorieCalculatorScreen.fullRoute
+            route = Screen.CalorieCalculatorScreen.fullRoute,
+            enterTransition = {
+                slideInHorizontally(
+                    initialOffsetX = { it }, animationSpec = tween(500)
+                ).plus(fadeIn(tween(500)))
+            },
+            exitTransition = {
+                slideOutHorizontally(
+                    targetOffsetX = { -it }, animationSpec = tween(500)
+                ).plus(fadeOut(tween(500)))
+            },
+            popEnterTransition = {
+                slideInHorizontally(
+                    initialOffsetX = { -it }, animationSpec = tween(500)
+                ).plus(fadeIn(tween(500)))
+            },
+            popExitTransition = {
+                slideOutHorizontally(
+                    targetOffsetX = { it }, animationSpec = tween(500)
+                ).plus(fadeOut(tween(500)))
+            }
         ) {
             CalorieCalculatorScreen(
                 onNavigateBack = {
@@ -188,7 +285,27 @@ fun NavGraphBuilder.profileScreenNavGraph(
             )
         }
         composable(
-            route = Screen.DailyCalorieIntakeScreen.fullRoute
+            route = Screen.DailyCalorieIntakeScreen.fullRoute,
+            enterTransition = {
+                slideInHorizontally(
+                    initialOffsetX = { it }, animationSpec = tween(500)
+                ).plus(fadeIn(tween(500)))
+            },
+            exitTransition = {
+                slideOutHorizontally(
+                    targetOffsetX = { -it }, animationSpec = tween(500)
+                ).plus(fadeOut(tween(500)))
+            },
+            popEnterTransition = {
+                slideInHorizontally(
+                    initialOffsetX = { -it }, animationSpec = tween(500)
+                ).plus(fadeIn(tween(500)))
+            },
+            popExitTransition = {
+                slideOutHorizontally(
+                    targetOffsetX = { it }, animationSpec = tween(500)
+                ).plus(fadeOut(tween(500)))
+            }
         ) {
             DailyCalorieIntakeScreen(
                 onNavigateBack = {

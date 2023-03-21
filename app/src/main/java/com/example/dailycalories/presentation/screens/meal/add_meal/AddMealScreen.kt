@@ -17,7 +17,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Alarm
-import androidx.compose.material.icons.outlined.KeyboardArrowLeft
+import androidx.compose.material.icons.outlined.KeyboardArrowDown
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -288,7 +288,7 @@ private fun HeaderSection(
                 }
             ) {
                 Icon(
-                    imageVector = Icons.Outlined.KeyboardArrowLeft,
+                    imageVector = Icons.Outlined.KeyboardArrowDown,
                     contentDescription = stringResource(id = R.string.desc_navigate_to_previous),
                     tint = MaterialTheme.colors.onSecondary
                 )
