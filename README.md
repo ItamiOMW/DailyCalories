@@ -20,6 +20,8 @@
  
  - [Retorift](https://square.github.io/retrofit/)
  
+ - [ViewPager](https://google.github.io/accompanist/pager/)
+ 
  - [Room](https://developer.android.com/training/data-storage/room)
  
  - [DataStore Preferences](https://developer.android.com/topic/libraries/architecture/datastore)
