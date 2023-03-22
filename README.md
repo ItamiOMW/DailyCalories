@@ -18,8 +18,6 @@
 
  - [Dagger-Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
  
- - [ViewPager](https://google.github.io/accompanist/pager/)
- 
  - [Retorift](https://square.github.io/retrofit/)
  
  - [Room](https://developer.android.com/training/data-storage/room)
