@@ -100,10 +100,6 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
-    //ViewPager
-    implementation "com.google.accompanist:accompanist-pager:$viewpager_version"
-    implementation "com.google.accompanist:accompanist-pager-indicators:$viewpager_version"
-
     //Data Store Preferences
     implementation("androidx.datastore:datastore-preferences:$datastore_version")
     implementation("androidx.datastore:datastore:$datastore_version")
